@@ -76,7 +76,6 @@
    class="block w-full text-center bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary font-display transition-colors duration-300">
    Login
 </a>
-</a>"
 </form>
 <div class="flex items-center my-6 px-4">
 <div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
