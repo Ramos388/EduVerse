@@ -46,7 +46,7 @@
 <div class="flex flex-col items-center justify-center w-full">
 <div class="text-center mb-8">
 <h1 class="text-primary dark:text-white tracking-light text-4xl font-bold leading-tight pb-2 pt-6 font-display">EduVerse</h1>
-<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal font-display">Unlock Your Potential with EduVerse</p>
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal font-display">Learning Made Affordable</p>
 </div>
 <div class="bg-white dark:bg-background-dark shadow-xl rounded-xl w-full p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-700">
 <div class="flex flex-col md:flex-row gap-8">
