@@ -9,7 +9,7 @@ EduVerse is an affordable and student-focused platform designed to make textbook
 - Clean, modern TailwindCSS design  
 
 ## 🚀 Live Demo
-🔗 [View the site here](https://ramos338.github.io/eduverse/)
+🔗 [View the site here]([https://ramos338.github.io/eduverse/])
 
 ## 🛠️ Built With
 - HTML5  
