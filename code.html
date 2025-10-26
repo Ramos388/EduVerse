@@ -1,156 +1,137 @@
 <!DOCTYPE html>
+
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Textbook Store</title>
+<title>EduVerse - Login/Signup</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script>
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "primary": "#4A90E2",
-                    "background-light": "#FFFFFF",
-                    "background-dark": "#101922",
-                    "panel-light": "#F5F5F5",
-                    "panel-dark": "#1a242f",
-                    "text-light": "#333333",
-                    "text-dark": "#e0e0e0",
-                    "accent": "#50E3C2",
-                },
-                fontFamily: {
-                    "display": ["Inter", "sans-serif"]
-                },
-                borderRadius: {
-                    "DEFAULT": "0.5rem",
-                    "lg": "0.75rem",
-                    "xl": "1rem",
-                    "full": "9999px"
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
                 },
             },
-        },
-    }
+        }
     </script>
 <style>
-    .material-symbols-outlined {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-    }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
-<div class="flex flex-col min-h-screen" id="root">
-<header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark shadow-md">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-16">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary text-3xl">import_contacts</span>
-<h1 class="text-xl font-bold text-text-light dark:text-text-dark">Textbook Store</h1>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden p-4 sm:p-6 lg:p-8">
+<div class="layout-container flex h-full grow flex-col w-full max-w-4xl">
+<div class="flex flex-col items-center justify-center w-full">
+<div class="text-center mb-8">
+<h1 class="text-primary dark:text-white tracking-light text-4xl font-bold leading-tight pb-2 pt-6 font-display">EduVerse</h1>
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal font-display">Unlock Your Potential with EduVerse</p>
 </div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-primary" href="#">Store</a>
-<a class="text-sm font-medium hover:text-primary" href="#">My Library</a>
-<a class="text-sm font-medium hover:text-primary" href="#">Study AI</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="relative flex items-center justify-center h-10 w-10 text-text-light dark:text-text-dark hover:text-primary dark:hover:text-primary">
-<span class="material-symbols-outlined">shopping_cart</span>
-<div class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</div>
-</button>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAYT1tQ4chaP4iH9L2AScAutifkdvlsz7t0vpkbq-_QEkFd-DDkt6aeDLVZxhN7IYMEGyMSc1pplb8GISJ5xg3yEAsV8ifwTWwtKBvTzyXp1BDrRRVEhay9ciqhIFKyazqvahvdOKgobnpRIL-R0rHWWVJ9r_625zxzKozzA8X7bDtce3GNxDmcAIpKnQSXWwBqj6iaQUX_UoyfY7SWk2eRZB-0vl2NUmhE362wJG5WGx3W1Geblpl78wRWGEu11il_qYRp_wypg06");'></div>
+<div class="bg-white dark:bg-background-dark shadow-xl rounded-xl w-full p-6 sm:p-8 lg:p-10 border border-gray-200 dark:border-gray-700">
+<div class="flex flex-col md:flex-row gap-8">
+<!-- Login Section -->
+<div class="w-full md:w-1/2 md:pr-8 md:border-r md:border-gray-200 dark:md:border-gray-700">
+<div class="flex flex-col">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-800 dark:text-white tracking-light text-2xl font-bold leading-tight font-display">Welcome Back!</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal font-display">Login to your account</p>
 </div>
 </div>
+<form class="space-y-6 px-4">
+<div class="flex flex-col">
+<label class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2 font-display" for="login-email">Email/Username</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder-gray-500 px-4 text-base font-normal leading-normal font-display" id="login-email" placeholder="Enter your email or username" type="text"/>
 </div>
-</header>
-<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-2">
-<h2 class="text-2xl font-bold mb-6">Your Cart</h2>
-<div class="space-y-4">
-<div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4">
-<img class="w-24 h-32 object-cover rounded" data-alt="A photo of an open book with a pair of glasses on top." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"/>
-<div class="flex-grow">
-<h3 class="font-semibold text-md text-text-light dark:text-text-dark">The Principles of Quantum Mechanics</h3>
-<p class="text-sm text-gray-500 dark:text-gray-400">P. A. M. Dirac</p>
-<div class="flex items-center gap-2 mt-2">
-<label class="text-sm" for="quantity-1">Qty:</label>
-<input class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center" id="quantity-1" type="number" value="1"/>
+<div class="flex flex-col">
+<label class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2 font-display" for="login-password">Password</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder-gray-500 px-4 text-base font-normal leading-normal font-display" id="login-password" placeholder="Enter your password" type="password"/>
 </div>
-</div>
-<div class="text-right">
-<p class="text-lg font-bold text-primary">$45.99</p>
-<button class="text-sm text-gray-500 hover:text-red-500 mt-2">Remove</button>
-</div>
-</div>
-<div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4">
-<img class="w-24 h-32 object-cover rounded" data-alt="A blue book with a title 'Sapiens'." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClZL7KtOkjh0udQPhYZqrUWsgu3oe54WUX0fLNDalfqEEAwWu4rIk-S6uT2GyKJ2VmOzLyUsVUI9_6R7aY0dYEZbxBoJeSpQoQ-WbUIg0q5fD7vwNRXOoXOQkQ8OWiBdGf3QW7wPOdoD83mnowHuWCHR1Fy-jB4Moy6i1LRxykJdkxJSg9oaFrt2RBRGDboSxgNECfpph87Khe7wD51h-1q_etoe1dPoPNtOVVAHj01x-jGnhpIaZT3pQNUDoU3ZZH_xzrCAcMM7js"/>
-<div class="flex-grow">
-<h3 class="font-semibold text-md text-text-light dark:text-text-dark">Sapiens: A Brief History of Humankind</h3>
-<p class="text-sm text-gray-500 dark:text-gray-400">Yuval Noah Harari</p>
-<div class="flex items-center gap-2 mt-2">
-<label class="text-sm" for="quantity-2">Qty:</label>
-<input class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center" id="quantity-2" type="number" value="1"/>
-</div>
-</div>
-<div class="text-right">
-<p class="text-lg font-bold text-primary">$35.00</p>
-<button class="text-sm text-gray-500 hover:text-red-500 mt-2">Remove</button>
-</div>
-</div>
-</div>
-</div>
-<aside class="lg:col-span-1 bg-panel-light dark:bg-panel-dark p-6 rounded-lg self-start">
-<h2 class="text-xl font-bold mb-4">Order Summary</h2>
-<div class="space-y-3">
-<div class="flex justify-between">
-<span>Subtotal</span>
-<span>$80.99</span>
-</div>
-<div class="flex justify-between">
-<span>Shipping</span>
-<span>$5.00</span>
-</div>
-<div class="flex justify-between text-lg font-bold">
-<span>Total</span>
-<span>$85.99</span>
-</div>
-</div>
-<div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-<div class="bg-green-100 dark:bg-green-900/50 border border-green-500 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg relative" role="alert">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-green-500">sell</span>
-<div>
-<p class="font-bold">You're earning 10% cashback!</p>
-<p class="text-sm">You will get <span class="font-bold">$8.60</span> in credits for your next purchase.</p>
-</div>
-</div>
-</div>
-</div>
-<button class="mt-6 w-full flex items-center justify-center gap-2 h-12 px-6 rounded-lg bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined">lock</span>
-<span>Proceed to Checkout</span>
-</button>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">Your cashback credits can be applied to any future textbook purchases or rentals on our platform.</p>
-</aside>
-</div>
-</main>
-<footer class="bg-panel-light dark:bg-panel-dark mt-auto py-6">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 dark:text-gray-400 text-sm">
-<div class="flex justify-center gap-6 mb-4">
-<a class="hover:text-primary" href="#">About Us</a>
-<a class="hover:text-primary" href="#">Contact</a>
-<a class="hover:text-primary" href="#">Terms of Service</a>
-<a class="hover:text-primary" href="#">Privacy Policy</a>
-</div>
-<p>© 2024 Textbook Finder. All rights reserved.</p>
-</div>
-</footer>
+<div class="flex items-center justify-between">
+<a class="text-sm font-medium text-primary hover:underline dark:text-primary/90 font-display" href="#">Forgot Password?</a>
 </div>
 
+<a href="file:///C:/Users/ramos/OneDrive/ITE154/stitch_student_dashboard/student_homepage_with_to-do/code.html"
+   class="block w-full text-center bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary font-display transition-colors duration-300">
+   Login
+</a>
+
+</form>
+<div class="flex items-center my-6 px-4">
+<div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+<span class="flex-shrink mx-4 text-gray-500 dark:text-gray-400 font-display text-sm">Or continue with</span>
+<div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
+<button class="flex items-center justify-center gap-2 w-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-semibold py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">
+<img alt="Google logo" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyRoX03Ip6xBDjAUYCSSNR8Ws84AQyVTaO28LhBDDcHNLcycACpMIFPgJj_z0cBuBogOE_Dx_McBFoRzjqi4yE2ffIIg2zd0Hh8um2JL7a9FMdo6oeuQbk6B8bV0Z3Y-8W5Sle4xvs4lu97KdHYC6dCanq18ML_8vv63bnPrFxpJc2yPeAS3n2vJ2nR50yxR-6x9-7I1rtkFEwdLT_VLtGn956lmSBgWNY6F5b7ykAteh1mjr7GrKSBzhi1S3stDbh5MEhMT_CBMJ9"/>
+                                        Google
+                                    </button>
+<button class="flex items-center justify-center gap-2 w-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-semibold py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">
+<img alt="Facebook logo" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaXqd8bbZ_qvFIbKeYBuhp0mB4twDrx9kQQX7xaxDOKaougQT_giEHnXe7wG0UAGIpLDNcZbaqw9vo74kG2nXzNL0_75Bp9pPpihgqPH1F2X4hDZ0UQOERuHXCqKTLaPYC3OJp_R4lU_SVLmB_fJUHZL7jPD661w0pUi0zctvs_yrWc9tKTwxZt1syqhAFeyzPSLosBxLsoyuK5de_3kn36bCVSnVdmtM3jt6JWxRECMnEeSN6QN8amDIpNMuDNgCX2syXwmVklc5A"/>
+                                        Facebook
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Signup Section -->
+<div class="w-full md:w-1/2 md:pl-8">
+<div class="flex flex-col">
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-800 dark:text-white tracking-light text-2xl font-bold leading-tight font-display">New to EduVerse?</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal font-display">Create an account</p>
+</div>
+</div>
+<form class="space-y-6 px-4">
+<div class="flex flex-col">
+<label class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2 font-display" for="signup-name">Name</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder-gray-500 px-4 text-base font-normal leading-normal font-display" id="signup-name" placeholder="Enter your full name" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2 font-display" for="signup-email">Email</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder-gray-500 px-4 text-base font-normal leading-normal font-display" id="signup-email" placeholder="Enter your email" type="email"/>
+</div>
+<div class="flex flex-col">
+<label class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2 font-display" for="signup-password">Password</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-gray-400 dark:placeholder-gray-500 px-4 text-base font-normal leading-normal font-display" id="signup-password" placeholder="Create a password" type="password"/>
+</div>
+<div class="flex items-start">
+<div class="flex items-center h-5">
+<input aria-describedby="terms-description" class="focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded" id="terms" name="terms" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm">
+<label class="font-medium text-gray-700 dark:text-gray-300 font-display" for="terms">I agree to the <a class="text-primary hover:underline" href="#">Terms &amp; Conditions</a></label>
+</div>
+</div>
+<button class="w-full bg-[#F5A623] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#F5A623]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F5A623] font-display transition-colors duration-300">Sign Up</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body></html>
