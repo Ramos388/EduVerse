@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Study Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#FAC638", "background-light": "#f8f8f5", "background-dark": "#231e0f", "scholarly-blue": "#4A90E2", "soft-gray": "#F4F7F9", "vibrant-green": "#50E3C2", "dark-gray": "#333333", "light-blue-response": "#E9F2FF"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen w-full">
+<aside class="w-64 flex flex-col bg-soft-gray dark:bg-background-dark border-r border-gray-200 dark:border-gray-700">
+<div class="flex flex-col p-4 gap-4 flex-grow">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="John Doe's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNsnEfgDsgqJJOiAEvMdmfer0JhWfdij3cMOywlrs5OJd5xTc0MYrX49ShSA_apXdOWfwSKgLqHtfM-170jT-TYoV_nLwopEJjhPHYHHEfgmnfM1ofbZIul_JvtjJlGQyoB38M6zsEk_MyekvfS9Ksmy78ewqD9sxMDU3WmSI8Ei2H3VRmugWzMkqdEbPUPxckTm9JB_SQ0OIqU-l9CuhqGVAkmVbq3R0Tpfd2MP5-t_AcHlIh9Xe6jxqgpQZUx0Ics_lGA8Sr7NBA");'></div>
+<div class="flex flex-col">
+<h1 class="text-dark-gray dark:text-white text-base font-medium leading-normal">John Doe</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">john.doe@email.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-dark-gray dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-sm font-medium">Home</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-dark-gray dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" href="#">
+<span class="material-symbols-outlined">book</span>
+<p class="text-sm font-medium">My Library</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-scholarly-blue/20 text-scholarly-blue" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<p class="text-sm font-medium">AI Assistant</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-dark-gray dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" href="#">
+<span class="material-symbols-outlined">style</span>
+<p class="text-sm font-medium">Flashcards</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-dark-gray dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+</nav>
+<div class="mt-auto">
+<h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Chat History</h3>
+<div class="flex flex-col gap-1 text-sm text-dark-gray dark:text-gray-300">
+<a class="px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 truncate" href="#">Chapter 3 Summary</a>
+<a class="px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 truncate" href="#">Newton's Laws Discussion</a>
+<a class="px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 truncate" href="#">Photosynthesis Explained</a>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-gray-200 dark:border-gray-700">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg h-10 px-4 bg-scholarly-blue text-white text-sm font-bold leading-normal">
+<span class="material-symbols-outlined">add</span>
+<span class="truncate">New Chat</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-screen">
+<header class="p-4 border-b border-gray-200 dark:border-gray-700">
+<div class="flex flex-wrap justify-between items-center gap-3">
+<div class="flex min-w-72 flex-col gap-1">
+<p class="text-dark-gray dark:text-white text-2xl font-black leading-tight tracking-tight">AI Study Assistant</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Your personal AI-powered study partner.</p>
+</div>
+<button class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-dark-gray dark:hover:text-white">
+<span class="material-symbols-outlined">delete</span>
+              Clear Chat
+            </button>
+</div>
+</header>
+<div class="flex-1 flex flex-col p-4 overflow-y-auto">
+<div class="flex flex-col gap-6 max-w-4xl mx-auto w-full">
+<!-- Welcome Message -->
+<div class="flex items-end gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="AI Assistant's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjXiR86H7ISQZGSDk1UK5KLnXDw5H1SvUNZZBgTTSyauI8v7jlA5GunXcj8uLahBgZbGyz-KjG5BEYcmM3tUJcfxYJ1IZjm61C8tAHUXOsl5lAAijBJnPlzIPK75IhvTc5KJ9bMpN-a4i5-oSRcHmbnjKOthkaprwzpLNSVrC1XC6FS0TAtKKicqx_fcK0fFL3iw5xRXCMPgOm8lzmvHzOGWXO6hK-swmqIcctCn_iwjz3aOHXSPCf207ze4jHOJfOWZbBuYPEElI2");'></div>
+<div class="flex flex-1 flex-col gap-1 items-start">
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px]">AI Assistant</p>
+<p class="text-base font-normal leading-normal flex max-w-lg rounded-lg px-4 py-3 bg-light-blue-response text-dark-gray dark:bg-gray-800 dark:text-gray-200">
+                Hello! I'm your AI study assistant. How can I help you with your textbooks today? You can ask me to summarize a chapter, explain a concept, or even quiz you on key terms.
+              </p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-end gap-3 justify-end">
+<div class="flex flex-1 flex-col gap-1 items-end">
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px] text-right">You</p>
+<p class="text-base font-normal leading-normal flex max-w-lg rounded-lg px-4 py-3 bg-scholarly-blue text-white">Can you summarize Chapter 3 for me?</p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="Your profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwb9Ntlorw219UZ0x9xBzHj3brK4Bohrm9-EAODWu3U1F97A_o7nxQsKdiuysFeucvGklRB3d-Sl4tOUi2rUzt66s2YeGtRKtzlpDJqBpXPtHEBLvrOkMSoz9Z3NLUCypqI_HsTZFiDqTsPLdaVGGydt_OqXgC7Kl31E2aU64YdH06-v3RO89O3oiEmaM_pYpmDfccmA8I8KxeEhZqwx0QLBFpe3ewkMDDoxBtq6DTZvTgnlX3NsqYT8VTPiwoi0Wvnx9fGTDmKEg9");'></div>
+</div>
+<!-- AI Typing Indicator -->
+<div class="flex items-end gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="AI Assistant's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8i3M4h_mXs0vi53UIzEPBMpnuC9NrETzj4AWuYewFn9CsI7aXhQYRxKPnu0dV_eYsRf0PyDQUgqTJWlBnsegm01uLsNDIvp7sOo5nNZ_W5fv0Uamf2S5Z3NlDXwDGvUBQZctBJhp8StdPQXmgCKRhZis2n--ZjkN7dO2Je8NUfYV-A8IM0dUJfNMOOpaEXToGdgbIkcwrV-ZOZVbhk4RnoY1o5GvPnCM-RNnKIVEccMdb8t1QNFAe9TRv-aZr1JlRvx_ZMyBC_9iy");'></div>
+<div class="flex flex-1 flex-col gap-1 items-start">
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px]">AI Assistant</p>
+<div class="flex items-center gap-2 rounded-lg px-4 py-3 bg-light-blue-response dark:bg-gray-800">
+<span class="h-2 w-2 bg-scholarly-blue rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+<span class="h-2 w-2 bg-scholarly-blue rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+<span class="h-2 w-2 bg-scholarly-blue rounded-full animate-bounce"></span>
+</div>
+</div>
+</div>
+<!-- AI Response -->
+<div class="flex items-end gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0" data-alt="AI Assistant's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbve_CADso64jz-CBqQH0SIKeiICoexoGGCmcczAy5Q9_5nWDvzpUXJjrdX-4LlHA-vnonzQxhPLaOmdAC277Aou04eKqXhWUNC_qHM8qlaW23iLOX4uqqfFYXoLbJtTSWsr5O8x1f4dgyuQV6X3toz5x6n1DnVy0VL7dsBfwX8Q6R_LpwgDOiUkBRr4MfrhEd_6cHgMrZQ5roz6oS2fDiPng9sdyqOya06QiNfcYVVIkorfRjBK9HoDXyRh5AXUtVn5iyl2FEnyxg");'></div>
+<div class="flex flex-1 flex-col gap-2 items-start">
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px]">AI Assistant</p>
+<div class="w-full max-w-lg space-y-2">
+<p class="text-base font-normal leading-normal flex rounded-lg px-4 py-3 bg-light-blue-response text-dark-gray dark:bg-gray-800 dark:text-gray-200">
+                  Of course. Chapter 3 discusses the core principles of cellular respiration. It begins by explaining glycolysis, the initial breakdown of glucose in the cytoplasm, which yields a small amount of ATP. It then moves to the Krebs cycle...
+                </p>
+<div class="flex gap-2">
+<button class="p-1.5 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400 text-base">thumb_up</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400 text-base">thumb_down</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="p-4 border-t border-gray-200 dark:border-gray-700">
+<div class="max-w-4xl mx-auto">
+<div class="flex gap-3 mb-3 overflow-x-auto pb-2">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-4 text-dark-gray dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+<p class="text-sm font-medium">Summarize Chapter</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-4 text-dark-gray dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+<p class="text-sm font-medium">Explain Concept</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-4 text-dark-gray dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+<p class="text-sm font-medium">Generate Quiz</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-4 text-dark-gray dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+<p class="text-sm font-medium">Define Term</p>
+</button>
+</div>
+<div class="relative">
+<textarea class="w-full p-4 pr-24 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-dark-gray dark:text-white focus:ring-2 focus:ring-scholarly-blue focus:outline-none" placeholder="Ask me anything about your textbook..." rows="1"></textarea>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+<button class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-scholarly-blue text-white flex items-center justify-center">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>
