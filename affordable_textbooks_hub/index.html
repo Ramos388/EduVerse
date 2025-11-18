@@ -1,156 +1,377 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Textbook Store</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Textbook Store</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <script>
     tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "primary": "#4A90E2",
-                    "background-light": "#FFFFFF",
-                    "background-dark": "#101922",
-                    "panel-light": "#F5F5F5",
-                    "panel-dark": "#1a242f",
-                    "text-light": "#333333",
-                    "text-dark": "#e0e0e0",
-                    "accent": "#50E3C2",
-                },
-                fontFamily: {
-                    "display": ["Inter", "sans-serif"]
-                },
-                borderRadius: {
-                    "DEFAULT": "0.5rem",
-                    "lg": "0.75rem",
-                    "xl": "1rem",
-                    "full": "9999px"
-                },
-            },
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "background-light": "#FFFFFF",
+            "background-dark": "#101922",
+            "panel-light": "#F5F5F5",
+            "panel-dark": "#1a242f",
+            "text-light": "#333333",
+            "text-dark": "#e0e0e0",
+            "accent": "#50E3C2",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
         },
+      },
     }
-    </script>
-<style>
+  </script>
+  <style>
     .material-symbols-outlined {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
     }
-    </style>
+  </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
 <div class="flex flex-col min-h-screen" id="root">
-<header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark shadow-md">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-16">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary text-3xl">import_contacts</span>
-<h1 class="text-xl font-bold text-text-light dark:text-text-dark">Textbook Store</h1>
-</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-primary" href="#">Store</a>
-<a class="text-sm font-medium hover:text-primary" href="#">My Library</a>
-<a class="text-sm font-medium hover:text-primary" href="#">Study AI</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="relative flex items-center justify-center h-10 w-10 text-text-light dark:text-text-dark hover:text-primary dark:hover:text-primary">
-<span class="material-symbols-outlined">shopping_cart</span>
-<div class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</div>
-</button>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAYT1tQ4chaP4iH9L2AScAutifkdvlsz7t0vpkbq-_QEkFd-DDkt6aeDLVZxhN7IYMEGyMSc1pplb8GISJ5xg3yEAsV8ifwTWwtKBvTzyXp1BDrRRVEhay9ciqhIFKyazqvahvdOKgobnpRIL-R0rHWWVJ9r_625zxzKozzA8X7bDtce3GNxDmcAIpKnQSXWwBqj6iaQUX_UoyfY7SWk2eRZB-0vl2NUmhE362wJG5WGx3W1Geblpl78wRWGEu11il_qYRp_wypg06");'></div>
-</div>
-</div>
-</div>
-</header>
-<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-2">
-<h2 class="text-2xl font-bold mb-6">Your Cart</h2>
-<div class="space-y-4">
-<div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4">
-<img class="w-24 h-32 object-cover rounded" data-alt="A photo of an open book with a pair of glasses on top." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"/>
-<div class="flex-grow">
-<h3 class="font-semibold text-md text-text-light dark:text-text-dark">The Principles of Quantum Mechanics</h3>
-<p class="text-sm text-gray-500 dark:text-gray-400">P. A. M. Dirac</p>
-<div class="flex items-center gap-2 mt-2">
-<label class="text-sm" for="quantity-1">Qty:</label>
-<input class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center" id="quantity-1" type="number" value="1"/>
-</div>
-</div>
-<div class="text-right">
-<p class="text-lg font-bold text-primary">$45.99</p>
-<button class="text-sm text-gray-500 hover:text-red-500 mt-2">Remove</button>
-</div>
-</div>
-<div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4">
-<img class="w-24 h-32 object-cover rounded" data-alt="A blue book with a title 'Sapiens'." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClZL7KtOkjh0udQPhYZqrUWsgu3oe54WUX0fLNDalfqEEAwWu4rIk-S6uT2GyKJ2VmOzLyUsVUI9_6R7aY0dYEZbxBoJeSpQoQ-WbUIg0q5fD7vwNRXOoXOQkQ8OWiBdGf3QW7wPOdoD83mnowHuWCHR1Fy-jB4Moy6i1LRxykJdkxJSg9oaFrt2RBRGDboSxgNECfpph87Khe7wD51h-1q_etoe1dPoPNtOVVAHj01x-jGnhpIaZT3pQNUDoU3ZZH_xzrCAcMM7js"/>
-<div class="flex-grow">
-<h3 class="font-semibold text-md text-text-light dark:text-text-dark">Sapiens: A Brief History of Humankind</h3>
-<p class="text-sm text-gray-500 dark:text-gray-400">Yuval Noah Harari</p>
-<div class="flex items-center gap-2 mt-2">
-<label class="text-sm" for="quantity-2">Qty:</label>
-<input class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center" id="quantity-2" type="number" value="1"/>
-</div>
-</div>
-<div class="text-right">
-<p class="text-lg font-bold text-primary">$35.00</p>
-<button class="text-sm text-gray-500 hover:text-red-500 mt-2">Remove</button>
-</div>
-</div>
-</div>
-</div>
-<aside class="lg:col-span-1 bg-panel-light dark:bg-panel-dark p-6 rounded-lg self-start">
-<h2 class="text-xl font-bold mb-4">Order Summary</h2>
-<div class="space-y-3">
-<div class="flex justify-between">
-<span>Subtotal</span>
-<span>$80.99</span>
-</div>
-<div class="flex justify-between">
-<span>Shipping</span>
-<span>$5.00</span>
-</div>
-<div class="flex justify-between text-lg font-bold">
-<span>Total</span>
-<span>$85.99</span>
-</div>
-</div>
-<div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-<div class="bg-green-100 dark:bg-green-900/50 border border-green-500 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg relative" role="alert">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-green-500">sell</span>
-<div>
-<p class="font-bold">You're earning 10% cashback!</p>
-<p class="text-sm">You will get <span class="font-bold">$8.60</span> in credits for your next purchase.</p>
-</div>
-</div>
-</div>
-</div>
-<button class="mt-6 w-full flex items-center justify-center gap-2 h-12 px-6 rounded-lg bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined">lock</span>
-<span>Proceed to Checkout</span>
-</button>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">Your cashback credits can be applied to any future textbook purchases or rentals on our platform.</p>
-</aside>
-</div>
-</main>
-<footer class="bg-panel-light dark:bg-panel-dark mt-auto py-6">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 dark:text-gray-400 text-sm">
-<div class="flex justify-center gap-6 mb-4">
-<a class="hover:text-primary" href="#">About Us</a>
-<a class="hover:text-primary" href="#">Contact</a>
-<a class="hover:text-primary" href="#">Terms of Service</a>
-<a class="hover:text-primary" href="#">Privacy Policy</a>
-</div>
-<p>© 2024 Textbook Finder. All rights reserved.</p>
-</div>
-</footer>
+  <header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark shadow-md">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary text-3xl">import_contacts</span>
+          <h1 class="text-xl font-bold text-text-light dark:text-text-dark">Textbook Store</h1>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-sm font-medium text-primary" href="#">Store</a>
+          <a class="text-sm font-medium hover:text-primary" href="#">My Library</a>
+          <a class="text-sm font-medium hover:text-primary" href="#">Study AI</a>
+        </nav>
+        <div class="flex items-center gap-4">
+
+          <!-- Cart button with dynamic badge -->
+          <button id="cart-button"
+                  class="relative flex items-center justify-center h-10 w-10 text-text-light dark:text-text-dark hover:text-primary dark:hover:text-primary">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <div id="cart-count-badge"
+                 class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              0
+            </div>
+          </button>
+
+          <!-- Dark mode toggle -->
+          <button id="theme-toggle"
+                  class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  aria-label="Toggle dark mode">
+            <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+          </button>
+
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+               data-alt="User profile picture"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAYT1tQ4chaP4iH9L2AScAutifkdvlsz7t0vpkbq-_QEkFd-DDkt6aeDLVZxhN7IYMEGyMSc1pplb8GISJ5xg3yEAsV8ifwTWwtKBvTzyXp1BDrRRVEhay9ciqhIFKyazqvahvdOKgobnpRIL-R0rHWWVJ9r_625zxzKozzA8X7bDtce3GNxDmcAIpKnQSXWwBqj6iaQUX_UoyfY7SWk2eRZB-0vl2NUmhE362wJG5WGx3W1Geblpl78wRWGEu11il_qYRp_wypg06");'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2">
+        <h2 class="text-2xl font-bold mb-6">Your Cart</h2>
+
+        <!-- Dynamic cart items will render here -->
+        <div id="cart-items" class="space-y-4">
+          <!-- Filled by JS -->
+        </div>
+
+        <!-- Empty cart state -->
+        <div id="empty-cart"
+             class="hidden mt-6 p-6 rounded-lg bg-panel-light dark:bg-panel-dark text-center text-gray-600 dark:text-gray-300">
+          <p class="text-lg font-semibold mb-2">Your cart is empty</p>
+          <p class="text-sm mb-4">Go back to the store to add textbooks.</p>
+          <a href="../search_textbooks_hubcode/"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90">
+            <span class="material-symbols-outlined text-base">search</span>
+            <span>Browse Textbooks</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="lg:col-span-1 bg-panel-light dark:bg-panel-dark p-6 rounded-lg self-start">
+        <h2 class="text-xl font-bold mb-4">Order Summary</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span id="subtotal-amount">$0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Shipping</span>
+            <span id="shipping-amount">$0.00</span>
+          </div>
+          <div class="flex justify-between text-lg font-bold">
+            <span>Total</span>
+            <span id="total-amount">$0.00</span>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div class="bg-green-100 dark:bg-green-900/50 border border-green-500 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg relative"
+               role="alert">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-green-500">sell</span>
+              <div>
+                <p class="font-bold">You're earning 10% cashback!</p>
+                <p class="text-sm">
+                  You will get
+                  <span id="cashback-amount" class="font-bold">$0.00</span>
+                  in credits for your next purchase.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="checkout-button"
+                class="mt-6 w-full flex items-center justify-center gap-2 h-12 px-6 rounded-lg bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+          <span class="material-symbols-outlined">lock</span>
+          <span>Proceed to Checkout</span>
+        </button>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+          Your cashback credits can be applied to any future textbook purchases or rentals on our platform.
+        </p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="bg-panel-light dark:bg-panel-dark mt-auto py-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 dark:text-gray-400 text-sm">
+      <div class="flex justify-center gap-6 mb-4">
+        <a class="hover:text-primary" href="#">About Us</a>
+        <a class="hover:text-primary" href="#">Contact</a>
+        <a class="hover:text-primary" href="#">Terms of Service</a>
+        <a class="hover:text-primary" href="#">Privacy Policy</a>
+      </div>
+      <p>© 2024 Textbook Finder. All rights reserved.</p>
+    </div>
+  </footer>
 </div>
 
-</body></html>
+<!-- CART + THEME SCRIPTS -->
+<script>
+  (function () {
+    const CART_KEY = 'eduverseCart'; // must match the store page
+    const SHIPPING_FLAT = 5;
+
+    function loadCart() {
+      try {
+        const stored = localStorage.getItem(CART_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        console.error('Error loading cart:', e);
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function getCartCount(cart) {
+      return cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+    }
+
+    function formatMoney(value) {
+      return '$' + value.toFixed(2);
+    }
+
+    function updateCartBadge(cart) {
+      const badge = document.getElementById('cart-count-badge');
+      if (!badge) return;
+      badge.textContent = getCartCount(cart);
+    }
+
+    function updateSummary(cart) {
+      const subtotalSpan = document.getElementById('subtotal-amount');
+      const shippingSpan = document.getElementById('shipping-amount');
+      const totalSpan = document.getElementById('total-amount');
+      const cashbackSpan = document.getElementById('cashback-amount');
+      const checkoutBtn = document.getElementById('checkout-button');
+
+      const subtotal = cart.reduce((sum, item) => {
+        const price = Number(item.price) || 0;
+        const qty = Number(item.qty) || 1;
+        return sum + price * qty;
+      }, 0);
+
+      const shipping = subtotal > 0 ? SHIPPING_FLAT : 0;
+      const total = subtotal + shipping;
+      const cashback = subtotal * 0.10; // 10% cashback
+
+      if (subtotalSpan) subtotalSpan.textContent = formatMoney(subtotal);
+      if (shippingSpan) shippingSpan.textContent = formatMoney(shipping);
+      if (totalSpan) totalSpan.textContent = formatMoney(total);
+      if (cashbackSpan) cashbackSpan.textContent = formatMoney(cashback);
+
+      if (checkoutBtn) {
+        checkoutBtn.disabled = subtotal === 0;
+      }
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById('cart-items');
+      const emptyState = document.getElementById('empty-cart');
+      if (!container) return;
+
+      const cart = loadCart();
+
+      // Empty cart UI
+      if (!cart.length) {
+        container.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        updateCartBadge(cart);
+        updateSummary(cart);
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      container.innerHTML = cart.map(item => {
+        const qty = item.qty || 1;
+        const price = Number(item.price) || 0;
+        const lineTotal = price * qty;
+
+        return `
+          <div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4 cart-item"
+               data-id="${item.id}">
+            <img
+              class="w-24 h-32 object-cover rounded"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"
+              alt="Book cover placeholder"
+            />
+            <div class="flex-grow">
+              <h3 class="font-semibold text-md text-text-light dark:text-text-dark">
+                ${item.title || 'Untitled Textbook'}
+              </h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                Price: ${formatMoney(price)}
+              </p>
+              <div class="flex items-center gap-2 mt-2">
+                <label class="text-sm" for="qty-${item.id}">Qty:</label>
+                <input
+                  id="qty-${item.id}"
+                  type="number"
+                  min="1"
+                  value="${qty}"
+                  class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center qty-input"
+                  data-id="${item.id}"
+                />
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold text-primary">
+                ${formatMoney(lineTotal)}
+              </p>
+              <button
+                class="text-sm text-gray-500 hover:text-red-500 mt-2 remove-item"
+                data-id="${item.id}">
+                Remove
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateCartBadge(cart);
+      updateSummary(cart);
+    }
+
+    function attachCartHandlers() {
+      const container = document.getElementById('cart-items');
+      if (!container) return;
+
+      // Remove + quantity change via event delegation
+      container.addEventListener('click', (e) => {
+        const removeBtn = e.target.closest('.remove-item');
+        if (!removeBtn) return;
+
+        const id = removeBtn.dataset.id;
+        if (!id) return;
+
+        let cart = loadCart();
+        cart = cart.filter(item => item.id !== id);
+        saveCart(cart);
+        renderCartItems();
+      });
+
+      container.addEventListener('change', (e) => {
+        const input = e.target.closest('.qty-input');
+        if (!input) return;
+
+        const id = input.dataset.id;
+        let value = Number(input.value);
+        if (!id) return;
+
+        if (isNaN(value) || value < 1) {
+          value = 1;
+          input.value = 1;
+        }
+
+        const cart = loadCart();
+        const item = cart.find(p => p.id === id);
+        if (item) {
+          item.qty = value;
+          saveCart(cart);
+          renderCartItems();
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartItems();
+      attachCartHandlers();
+    });
+  })();
+</script>
+
+<!-- 🌙 DARK MODE SCRIPT -->
+<script>
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    if (!btn || !icon) return;
+
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      html.classList.add('dark');
+    }
+
+    function updateIcon() {
+      icon.textContent = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    }
+    updateIcon();
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const mode = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', mode);
+      updateIcon();
+    });
+  })();
+</script>
+
+</body>
+</html>
