@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<!DOCTYPE html> 
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Affordable Textbooks</title>
@@ -8,285 +8,338 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#4A90E2",
-                        "secondary": "#7ED321",
-                        "accent": "#F5A623",
-                        "background-light": "#F5F5F5",
-                        "background-dark": "#101922",
-                        "text-light": "#333333",
-                        "text-dark": "#F5F5F5",
-                    },
-                    fontFamily: {
-                        "display": ["Lexend", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#4A90E2",
+          "secondary": "#7ED321",
+          "accent": "#F5A623",
+          "background-light": "#F5F5F5",
+          "background-dark": "#101922",
+          "text-light": "#333333",
+          "text-dark": "#F5F5F5",
+        },
+        fontFamily: {
+          "display": ["Lexend", "sans-serif"]
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+      },
+    },
+  }
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24
-        }
-    </style>
+  .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+  }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
 <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 px-10 py-3 bg-white dark:bg-background-dark">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
-<div class="size-6 text-primary">
-<svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93V4.07z"></path>
-</svg>
-</div>
-<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Textbook Finder</h2>
-</div>
-<div class="flex items-center gap-9">
-   <a class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
-   href="../student_homepage_with_to-do/">
-   Home
-</a>
-    <a class="text-primary text-sm font-medium leading-normal" href="#">Textbooks</a>
-    <a href="./ai_study_assistant/"
-       class=class="text-sm font-medium leading-normal">
-       AI Assistant
-    </a>
-    <a class="text-sm font-medium leading-normal" href="#">My Account</a>
-</div>
+  <div class="flex items-center gap-8">
+    <div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+      <div class="size-6 text-primary">
+        <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93V4.07z"></path>
+        </svg>
+      </div>
+      <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Textbook Finder</h2>
+    </div>
+    <div class="flex items-center gap-9">
+      <a class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+         href="../student_homepage_with_to-do/">
+        Home
+      </a>
+      <a class="text-primary text-sm font-medium leading-normal" href="#">Textbooks</a>
+      <a href="./ai_study_assistant/"
+         class="text-sm font-medium leading-normal">
+         AI Assistant
+      </a>
+      <a class="text-sm font-medium leading-normal" href="#">My Account</a>
+    </div>
+  </div>
 
-</div>
-<div class="flex flex-1 justify-end gap-4 items-center">
-<label class="flex flex-col min-w-40 h-10 max-w-64">
-<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
-<div class="text-gray-500 flex items-center justify-center pl-3 pr-1 rounded-l-lg bg-gray-100 dark:bg-gray-800">
-<span class="material-symbols-outlined">search</span>
-</div>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-800 h-full placeholder:text-gray-500 px-2 text-sm font-normal" placeholder="Search by ISBN, Title, Author" value=""/>
-</div>
-</label>
-</div>
+  <div class="flex flex-1 justify-end gap-4 items-center">
+    <label class="flex flex-col min-w-40 h-10 max-w-64">
+      <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+        <div class="text-gray-500 flex items-center justify-center pl-3 pr-1 rounded-l-lg bg-gray-100 dark:bg-gray-800">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <input
+          class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-800 h-full placeholder:text-gray-500 px-2 text-sm font-normal"
+          placeholder="Search by ISBN, Title, Author"
+          value=""
+        />
+      </div>
+    </label>
+
+    <!-- 🌙 THEME TOGGLE BUTTON -->
+    <button id="theme-toggle"
+            class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+            aria-label="Toggle dark mode">
+      <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+    </button>
+  </div>
 </header>
+
 <main class="flex-1">
-<div class="px-4 py-8 md:px-8 lg:px-16">
-<div class="bg-accent rounded-lg p-8 text-center text-white mb-8">
-<h2 class="text-4xl font-black leading-tight tracking-[-0.033em] mb-2">EduVerse</h2>
-<h2 class="text-4xl font-black leading-tight tracking-[-0.033em] mb-2">Learning Made Affordable</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-<aside class="md:col-span-1">
-<div class="bg-white dark:bg-background-dark p-6 rounded-lg shadow-md">
-<h2 class="text-xl font-bold mb-4">Filter Results</h2>
-<div>
-<h3 class="font-semibold mb-2">Price Range</h3>
-<div class="relative pt-1">
-<div class="flex h-2 mb-4 overflow-hidden text-xs bg-gray-200 rounded">
-<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width: 30%"></div>
-<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary/70" style="width: 40%"></div>
-</div>
-<div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
-<span>$0</span>
-<span>$500+</span>
-</div>
-</div>
-</div>
-<div class="mt-6">
-<h3 class="font-semibold mb-2">Condition</h3>
-<div class="space-y-2">
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">New</span>
-</label>
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">Used - Like New</span>
-</label>
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">Used - Good</span>
-</label>
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">Used - Acceptable</span>
-</label>
-</div>
-</div>
-<div class="mt-6">
-<h3 class="font-semibold mb-2">Format</h3>
-<div class="space-y-2">
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">E-book</span>
-</label>
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">Hardcover</span>
-</label>
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">Paperback</span>
-</label>
-<label class="flex items-center">
-<input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
-<span class="ml-2 text-sm">Rental</span>
-</label>
-</div>
-</div>
-</div>
-<div class="bg-blue-100 dark:bg-blue-900 border-l-4 border-primary text-blue-700 dark:text-blue-300 p-4 rounded-r-lg mt-8" role="alert">
-<p class="font-bold">A Note for Our Students</p>
-<p class="text-sm">We understand the financial pressures of higher education. Our platform is dedicated to making textbooks affordable for everyone, especially those with household incomes under $60,000. We're here to support your academic journey.</p>
-</div>
-</aside>
-<div class="md:col-span-3">
-<div class="flex justify-between items-center mb-4">
-<p class="text-sm text-gray-600 dark:text-gray-400">Showing 1-12 of 86 results</p>
-<div class="flex items-center gap-2">
-<label class="text-sm font-medium" for="sort">Sort by:</label>
-<select class="form-select block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md bg-white dark:bg-gray-800 dark:border-gray-600" id="sort" name="sort">
-<option>Relevance</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
-</select>
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Textbook Card Example -->
-<div class="bg-white dark:bg-background-dark rounded-lg shadow-md overflow-hidden flex flex-col">
-<img class="w-full h-48 object-cover" data-alt="Cover of Introduction to Psychology textbook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIrJ-bZlA3BDGIN0N1zO4-PBHjktOszuDKuL47TtHzmm4ExVUVH4hz5WSWiUf5R3-nKhFts-ViN-6z0X4rMN6fSbRlBBk2zZZ97gN_RY6HanuGgss_1wqKeJithpWJCcEts7JmKKMk8InKW-PLZiSL7opeOEq02t_m0IzYzk5yPbcvIXvRMVENbXWTSeLHOu4p5tH5SQxidb0d4-yPQZI3BLJU4RQXasGf-A5pdTVKWgG5V9mWV5wN57pBJzYbXuuPficXxAMAUSU4"/>
-<div class="p-4 flex flex-col flex-grow">
-<h4 class="font-bold text-lg">Introduction to Psychology</h4>
-<p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Dr. Jane Doe</p>
-<div class="mt-auto">
-<div class="my-2">
-<p class="text-sm text-gray-500">Original: <span class="line-through">$150.00</span></p>
-<p class="text-lg font-bold text-text-light dark:text-text-dark">Our Price: $75.00</p>
-<p class="text-sm text-gray-600 dark:text-gray-400">Rental: $30/semester</p>
-</div>
-<div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 50%!</div>
-<button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
-<a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
-</div>
-</div>
-</div>
-<!-- Repeat Textbook Card -->
-<div class="bg-white dark:bg-background-dark rounded-lg shadow-md overflow-hidden flex flex-col">
-<img class="w-full h-48 object-cover" data-alt="Cover of Calculus: Early Transcendentals textbook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoOl_5ld4hU14DKaSvgdQtkIsMQX2vlUI4Lrt9NrzgfkKdej8v1zcBu0p02QP8dQlXhjyOOSpccv6MJ1siPzTn5Uz3FcoqtfgStJzt9O3UUFzDEfAWlL8JXxugplmzZqLAJ8JGtZiEiiTr74IKaYVPbLzOGWKgoAZSj9n5vCZXx7os0IrskHQZ1RwYmFaa620jJyGAIobhmsP9bSIqzTJ28RxqoXTDnODL97lzAdnuFFaXif7F6UaNY8bCtWPmJiU6DqcauyPm-nv-"/>
-<div class="p-4 flex flex-col flex-grow">
-<h4 class="font-bold text-lg">Calculus: Early Transcendentals</h4>
-<p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Dr. John Smith</p>
-<div class="mt-auto">
-<div class="my-2">
-<p class="text-sm text-gray-500">Original: <span class="line-through">$200.00</span></p>
-<p class="text-lg font-bold text-text-light dark:text-text-dark">Our Price: $90.00</p>
-<p class="text-sm text-gray-600 dark:text-gray-400">Rental: $45/semester</p>
-</div>
-<div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 55%!</div>
-<button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
-<a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
-</div>
-</div>
-</div>
-<div class="bg-white dark:bg-background-dark rounded-lg shadow-md overflow-hidden flex flex-col">
-<img class="w-full h-48 object-cover" data-alt="Cover of Organic Chemistry textbook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6AkfnUuaplO374kR9hCF4FXdowVUG-Bu9311_ZFxCcf5ZrSvtUcl0-_bNtMoOR7JpeN-HHNTetFDwqcgqhhUnAGpX5kMoSYK8GZeAFBxVf1AZgYbdINlx4S7CmJNEN19dlQmQvE3Nih5dVmrAnZ8fboxkn5OOEKa7u8dcI2f3iEOxyAhH0QhJKWts-jbnQU8lf1Tku2UoB3EBDaU_WrxlJ7glA5Cp8iLXq1Gsmi3xvCuojLZ7Oul3L_2yi4FCZLYHQt1etVsNShjN"/>
-<div class="p-4 flex flex-col flex-grow">
-<h4 class="font-bold text-lg">Organic Chemistry</h4>
-<p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Dr. Emily White</p>
-<div class="mt-auto">
-<div class="my-2">
-<p class="text-sm text-gray-500">Original: <span class="line-through">$180.00</span></p>
-<p class="text-lg font-bold text-text-light dark:text-text-dark">Our Price: $85.00</p>
-<p class="text-sm text-gray-600 dark:text-gray-400">Rental: $40/semester</p>
-</div>
-<div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 53%!</div>
-<button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
-<a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-8 flex justify-center">
-<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
-<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
-<span class="sr-only">Previous</span>
-<span class="material-symbols-outlined h-5 w-5">chevron_left</span>
-</a>
-<a aria-current="page" class="z-10 bg-primary/20 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#"> 1 </a>
-<a class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#"> 2 </a>
-<a class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#"> 3 </a>
-<span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700"> ... </span>
-<a class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#"> 8 </a>
-<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
-<span class="sr-only">Next</span>
-<span class="material-symbols-outlined h-5 w-5">chevron_right</span>
-</a>
-</nav>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-primary/10 dark:bg-primary/20 py-12 px-4 mt-12">
-<div class="max-w-4xl mx-auto text-center">
-<h2 class="text-3xl font-bold mb-2">More Than Just Savings</h2>
-<p class="text-lg mb-6">Our integrated AI study assistant helps you understand complex topics, prepare for exams, and get the most out of your textbooks. Succeed academically while saving money.</p>
-<a href="file:///C:/Users/ramos/OneDrive/ITE154/stitch_student_dashboard/ai_study_assistant/code.html" 
-   class="inline-block bg-accent text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-accent/90 transition duration-300">
-   Learn About AI Assistance
-</a>
+  <div class="px-4 py-8 md:px-8 lg:px-16">
+    <div class="bg-accent rounded-lg p-8 text-center text-white mb-8">
+      <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] mb-2">EduVerse</h2>
+      <h2 class="text-4xl font-black leading-tight tracking-[-0.033em] mb-2">Learning Made Affordable</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <aside class="md:col-span-1">
+        <div class="bg-white dark:bg-background-dark p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-bold mb-4">Filter Results</h2>
+          <div>
+            <h3 class="font-semibold mb-2">Price Range</h3>
+            <div class="relative pt-1">
+              <div class="flex h-2 mb-4 overflow-hidden text-xs bg-gray-200 rounded">
+                <div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width: 30%"></div>
+                <div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary/70" style="width: 40%"></div>
+              </div>
+              <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400">
+                <span>$0</span>
+                <span>$500+</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6">
+            <h3 class="font-semibold mb-2">Condition</h3>
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">New</span>
+              </label>
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">Used - Like New</span>
+              </label>
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">Used - Good</span>
+              </label>
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">Used - Acceptable</span>
+              </label>
+            </div>
+          </div>
+          <div class="mt-6">
+            <h3 class="font-semibold mb-2">Format</h3>
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">E-book</span>
+              </label>
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">Hardcover</span>
+              </label>
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">Paperback</span>
+              </label>
+              <label class="flex items-center">
+                <input class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+                <span class="ml-2 text-sm">Rental</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="bg-blue-100 dark:bg-blue-900 border-l-4 border-primary text-blue-700 dark:text-blue-300 p-4 rounded-r-lg mt-8" role="alert">
+          <p class="font-bold">A Note for Our Students</p>
+          <p class="text-sm">We understand the financial pressures of higher education. Our platform is dedicated to making textbooks affordable for everyone, especially those with household incomes under $60,000. We're here to support your academic journey.</p>
+        </div>
+      </aside>
+
+      <div class="md:col-span-3">
+        <div class="flex justify-between items-center mb-4">
+          <p class="text-sm text-gray-600 dark:text-gray-400">Showing 1-12 of 86 results</p>
+          <div class="flex items-center gap-2">
+            <label class="text-sm font-medium" for="sort">Sort by:</label>
+            <select
+              class="form-select block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md bg-white dark:bg-gray-800 dark:border-gray-600"
+              id="sort"
+              name="sort">
+              <option>Relevance</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Textbook Card Example -->
+          <div class="bg-white dark:bg-background-dark rounded-lg shadow-md overflow-hidden flex flex-col">
+            <img class="w-full h-48 object-cover" data-alt="Cover of Introduction to Psychology textbook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIrJ-bZlA3BDGIN0N1zO4-PBHjktOszuDKuL47TtHzmm4ExVUVH4hz5WSWiUf5R3-nKhFts-ViN-6z0X4rMN6fSbRlBBk2zZZ97gN_RY6HanuGgss_1wqKeJithpWJCcEts7JmKKMk8InKW-PLZiSL7opeOEq02t_m0IzYzk5yPbcvIXvRMVENbXWTSeLHOu4p5tH5SQxidb0d4-yPQZI3BLJU4RQXasGf-A5pdTVKWgG5V9mWV5wN57pBJzYbXuuPficXxAMAUSU4"/>
+            <div class="p-4 flex flex-col flex-grow">
+              <h4 class="font-bold text-lg">Introduction to Psychology</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Dr. Jane Doe</p>
+              <div class="mt-auto">
+                <div class="my-2">
+                  <p class="text-sm text-gray-500">Original: <span class="line-through">$150.00</span></p>
+                  <p class="text-lg font-bold text-text-light dark:text-text-dark">Our Price: $75.00</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Rental: $30/semester</p>
+                </div>
+                <div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 50%!</div>
+                <button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
+                <a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Repeat Textbook Card -->
+          <div class="bg-white dark:bg-background-dark rounded-lg shadow-md overflow-hidden flex flex-col">
+            <img class="w-full h-48 object-cover" data-alt="Cover of Calculus: Early Transcendentals textbook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoOl_5ld4hU14DKaSvgdQtkIsMQX2vlUI4Lrt9NrzgfkKdej8v1zcBu0p02QP8dQlXhjyOOSpccv6MJ1siPzTn5Uz3FcoqtfgStJzt9O3UUFzDEfAWlL8JXxugplmzZqLAJ8JGtZiEiiTr74IKaYVPbLzOGWKgoAZSj9n5vCZXx7os0IrskHQZ1RwYmFaa620jJyGAIobhmsP9bSIqzTJ28RxqoXTDnODL97lzAdnuFFaXif7F6UaNY8bCtWPmJiU6DqcauyPm-nv-"/>
+            <div class="p-4 flex flex-col flex-grow">
+              <h4 class="font-bold text-lg">Calculus: Early Transcendentals</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Dr. John Smith</p>
+              <div class="mt-auto">
+                <div class="my-2">
+                  <p class="text-sm text-gray-500">Original: <span class="line-through">$200.00</span></p>
+                  <p class="text-lg font-bold text-text-light dark:text-text-dark">Our Price: $90.00</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Rental: $45/semester</p>
+                </div>
+                <div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 55%!</div>
+                <button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
+                <a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-background-dark rounded-lg shadow-md overflow-hidden flex flex-col">
+            <img class="w-full h-48 object-cover" data-alt="Cover of Organic Chemistry textbook" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6AkfnUuaplO374kR9hCF4FXdowVUG-Bu9311_ZFxCcf5ZrSvtUcl0-_bNtMoOR7JpeN-HHNTetFDwqcgqhhUnAGpX5kMoSYK8GZeAFBxVf1AZgYbdINlx4S7CmJNEN19dlQmQvE3Nih5dVmrAnZ8fboxkn5OOEKa7u8dcI2f3iEOxyAhH0QhJKWts-jbnQU8lf1Tku2UoB3EBDaU_WrxlJ7glA5Cp8iLXq1Gsmi3xvCuojLZ7Oul3L_2yi4FCZLYHQt1etVsNShjN"/>
+            <div class="p-4 flex flex-col flex-grow">
+              <h4 class="font-bold text-lg">Organic Chemistry</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Dr. Emily White</p>
+              <div class="mt-auto">
+                <div class="my-2">
+                  <p class="text-sm text-gray-500">Original: <span class="line-through">$180.00</span></p>
+                  <p class="text-lg font-bold text-text-light dark:text-text-dark">Our Price: $85.00</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Rental: $40/semester</p>
+                </div>
+                <div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 53%!</div>
+                <button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
+                <a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex justify-center">
+          <nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+            <a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
+              <span class="sr-only">Previous</span>
+              <span class="material-symbols-outlined h-5 w-5">chevron_left</span>
+            </a>
+            <a aria-current="page" class="z-10 bg-primary/20 border-primary text-primary relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#"> 1 </a>
+            <a class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium" href="#"> 2 </a>
+            <a class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#"> 3 </a>
+            <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700"> ... </span>
+            <a class="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" href="#"> 8 </a>
+            <a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-500 hover:bg-gray-50" href="#">
+              <span class="sr-only">Next</span>
+              <span class="material-symbols-outlined h-5 w-5">chevron_right</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-primary/10 dark:bg-primary/20 py-12 px-4 mt-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-2">More Than Just Savings</h2>
+      <p class="text-lg mb-6">Our integrated AI study assistant helps you understand complex topics, prepare for exams, and get the most out of your textbooks. Succeed academically while saving money.</p>
+      <a href="file:///C:/Users/ramos/OneDrive/ITE154/stitch_student_dashboard/ai_study_assistant/code.html" 
+         class="inline-block bg-accent text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-accent/90 transition duration-300">
+         Learn About AI Assistance
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-white dark:bg-background-dark mt-12 py-8 px-10 border-t border-gray-200 dark:border-gray-700">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <h5 class="font-bold mb-2">EduVerse</h5>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Your affordable source for academic success.</p>
+    </div>
+    <div>
+      <h5 class="font-bold mb-2">Navigate</h5>
+      <ul class="space-y-1 text-sm">
+        <li><a class="hover:text-primary" href="#">Home</a></li>
+        <li><a class="hover:text-primary" href="#">Textbooks</a></li>
+        <li><a class="hover:text-primary" href="#">About Us</a></li>
+        <li><a class="hover:text-primary" href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-2">Support</h5>
+      <ul class="space-y-1 text-sm">
+        <li><a class="hover:text-primary" href="#">FAQ</a></li>
+        <li><a class="hover:text-primary" href="#">Shipping &amp; Returns</a></li>
+        <li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+        <li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-bold mb-2">Trust</h5>
+      <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+        <span class="material-symbols-outlined text-green-500">verified_user</span>
+        <span>Secure Checkout</span>
+      </div>
+      <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mt-1">
+        <span class="material-symbols-outlined text-green-500">thumb_up</span>
+        <span>Satisfaction Guarantee</span>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </div>
-</div>
-</main>
-<footer class="bg-white dark:bg-background-dark mt-12 py-8 px-10 border-t border-gray-200 dark:border-gray-700">
-<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-<div>
-<h5 class="font-bold mb-2">EduVerse</h5>
-<p class="text-sm text-gray-600 dark:text-gray-400">Your affordable source for academic success.</p>
-</div>
-<div>
-<h5 class="font-bold mb-2">Navigate</h5>
-<ul class="space-y-1 text-sm">
-<li><a class="hover:text-primary" href="#">Home</a></li>
-<li><a class="hover:text-primary" href="#">Textbooks</a></li>
-<li><a class="hover:text-primary" href="#">About Us</a></li>
-<li><a class="hover:text-primary" href="#">Contact</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-bold mb-2">Support</h5>
-<ul class="space-y-1 text-sm">
-<li><a class="hover:text-primary" href="#">FAQ</a></li>
-<li><a class="hover:text-primary" href="#">Shipping &amp; Returns</a></li>
-<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
-</ul>
-</div>
-<div>
-<h5 class="font-bold mb-2">Trust</h5>
-<div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-<span class="material-symbols-outlined text-green-500">verified_user</span>
-<span>Secure Checkout</span>
-</div>
-<div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 mt-1">
-<span class="material-symbols-outlined text-green-500">thumb_up</span>
-<span>Satisfaction Guarantee</span>
-</div>
-</div>
-</div>
-</footer>
-</div>
-</body></html>
+
+<!-- 🌙 DARK MODE SCRIPT -->
+<script>
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    if (!btn || !icon) return;
+
+    // Load saved theme
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      html.classList.add('dark');
+    }
+
+    function updateIcon() {
+      icon.textContent = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    }
+    updateIcon();
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const mode = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', mode);
+      updateIcon();
+    });
+  })();
+</script>
+
+</body>
+</html>
