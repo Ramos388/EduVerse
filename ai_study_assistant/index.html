@@ -122,8 +122,70 @@
 
     <div class="flex-1 flex flex-col p-4 overflow-y-auto">
       <div class="flex flex-col gap-6 max-w-4xl mx-auto w-full">
-        <!-- Chat content unchanged -->
-        <!-- ... (messages, bubbles, etc. exactly as you had them) ... -->
+        <!-- Welcome Message -->
+        <div class="flex items-end gap-3">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0"
+               data-alt="AI Assistant's profile picture"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjXiR86H7ISQZGSDk1UK5KLnXDw5H1SvUNZZBgTTSyauI8v7jlA5GunXcj8uLahBgZbGyz-KjG5BEYcmM3tUJcfxYJ1IZjm61C8tAHUXOsl5lAAijBJnPlzIPK75IhvTc5KJ9bMpN-a4i5-oSRcHmbnjKOthkaprwzpLNSVrC1XC6FS0TAtKKicqx_fcK0fFL3iw5xRXCMPgOm8lzmvHzOGWXO6hK-swmqIcctCn_iwjz3aOHXSPCf207ze4jHOJfOWZbBuYPEElI2");'></div>
+          <div class="flex flex-1 flex-col gap-1 items-start">
+            <p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px]">AI Assistant</p>
+            <p class="text-base font-normal leading-normal flex max-w-lg rounded-lg px-4 py-3 bg-light-blue-response text-dark-gray dark:bg-gray-800 dark:text-gray-200">
+              Hello! I'm your AI study assistant. How can I help you with your textbooks today? You can ask me to summarize a chapter, explain a concept, or even quiz you on key terms.
+            </p>
+          </div>
+        </div>
+
+        <!-- User Message -->
+        <div class="flex items-end gap-3 justify-end">
+          <div class="flex flex-1 flex-col gap-1 items-end">
+            <p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px] text-right">You</p>
+            <p class="text-base font-normal leading-normal flex max-w-lg rounded-lg px-4 py-3 bg-scholarly-blue text-white">
+              Can you summarize Chapter 3 for me?
+            </p>
+          </div>
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0"
+               data-alt="Your profile picture"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwb9Ntlorw219UZ0x9xBzHj3brK4Bohrm9-EAODWu3U1F97A_o7nxQsKdiuysFeucvGklRB3d-Sl4tOUi2rUzt66s2YeGtRKtzlpDJqBpXPtHEBLvrOkMSoz9Z3NLUCypqI_HsTZFiDqTsPLdaVGGydt_OqXgC7Kl31E2aU64YdH06-v3RO89O3oiEmaM_pYpmDfccmA8I8KxeEhZqwx0QLBFpe3ewkMDDoxBtq6DTZvTgnlX3NsqYT8VTPiwoi0Wvnx9fGTDmKEg9");'></div>
+        </div>
+
+        <!-- AI Typing Indicator -->
+        <div class="flex items-end gap-3">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0"
+               data-alt="AI Assistant's profile picture"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8i3M4h_mXs0vi53UIzEPBMpnuC9NrETzj4AWuYewFn9CsI7aXhQYRxKPnu0dV_eYsRf0PyDQUgqTJWlBnsegm01uLsNDIvp7sOo5nNZ_W5fv0Uamf2S5Z3NlDXwDGvUBQZctBJhp8StdPQXmgCKRhZis2n--ZjkN7dO2Je8NUfYV-A8IM0dUJfNMOOpaEXToGdgbIkcwrV-ZOZVbhk4RnoY1o5GvPnCM-RNnKIVEccMdb8t1QNFAe9TRv-aZr1JlRvx_ZMyBC_9iy");'></div>
+          <div class="flex flex-1 flex-col gap-1 items-start">
+            <p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px]">AI Assistant</p>
+            <div class="flex items-center gap-2 rounded-lg px-4 py-3 bg-light-blue-response dark:bg-gray-800">
+              <span class="h-2 w-2 bg-scholarly-blue rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+              <span class="h-2 w-2 bg-scholarly-blue rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+              <span class="h-2 w-2 bg-scholarly-blue rounded-full animate-bounce"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Response -->
+        <div class="flex items-end gap-3">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 shrink-0"
+               data-alt="AI Assistant's profile picture"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbve_CADso64jz-CBqQH0SIKeiICoexoGGCmcczAy5Q9_5nWDvzpUXJjrdX-4LlHA-vnonzQxhPLaOmdAC277Aou04eKqXhWUNC_qHM8qlaW23iLOX4uqqfFYXoLbJtTSWsr5O8x1f4dgyuQV6X3toz5x6n1DnVy0VL7dsBfwX8Q6R_LpwgDOiUkBRr4MfrhEd_6cHgMrZQ5roz6oS2fDiPng9sdyqOya06QiNfcYVVIkorfRjBK9HoDXyRh5AXUtVn5iyl2FEnyxg");'></div>
+          <div class="flex flex-1 flex-col gap-2 items-start">
+            <p class="text-gray-500 dark:text-gray-400 text-[13px] font-normal leading-normal max-w-[360px]">AI Assistant</p>
+            <div class="w-full max-w-lg space-y-2">
+              <p class="text-base font-normal leading-normal flex rounded-lg px-4 py-3 bg-light-blue-response text-dark-gray dark:bg-gray-800 dark:text-gray-200">
+                Of course. Chapter 3 discusses the core principles of cellular respiration. It begins by explaining glycolysis, the initial breakdown of glucose in the cytoplasm, which yields a small amount of ATP. It then moves to the Krebs cycle...
+              </p>
+              <div class="flex gap-2">
+                <button class="p-1.5 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700">
+                  <span class="material-symbols-outlined text-gray-600 dark:text-gray-400 text-base">thumb_up</span>
+                </button>
+                <button class="p-1.5 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700">
+                  <span class="material-symbols-outlined text-gray-600 dark:text-gray-400 text-base">thumb_down</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -188,5 +250,3 @@
 
 </body>
 </html>
-
-
