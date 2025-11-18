@@ -372,6 +372,85 @@
     });
   })();
 </script>
+        <script>
+  (function () {
+    // ---- Helpers to load & save cart ----
+    function getCart() {
+      try {
+        return JSON.parse(localStorage.getItem('eduverse_cart')) || [];
+      } catch (e) {
+        return [];
+      }
+    }
 
+    function saveCart(cart) {
+      localStorage.setItem('eduverse_cart', JSON.stringify(cart));
+      updateCartCount(cart);
+    }
+
+    // ---- Update cart badge (if you add one) ----
+    function updateCartCount(cart) {
+      const countEl = document.querySelector('[data-cart-count]');
+      if (!countEl) return; // safe if you don't have a badge yet
+
+      const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+      countEl.textContent = totalQty;
+
+      // Hide badge when empty (optional)
+      if (totalQty === 0) {
+        countEl.classList.add('hidden');
+      } else {
+        countEl.classList.remove('hidden');
+      }
+    }
+
+    // ---- Wire up Add to Cart buttons ----
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.add-to-cart');
+      if (!buttons.length) return;
+
+      // Initialize badge from saved cart
+      updateCartCount(getCart());
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const id = btn.dataset.id;
+          const title = btn.dataset.title;
+          const price = parseFloat(btn.dataset.price || '0');
+          const rental = btn.dataset.rental ? parseFloat(btn.dataset.rental) : null;
+
+          if (!id) return; // safety check
+
+          let cart = getCart();
+          const existing = cart.find(item => item.id === id);
+
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({
+              id: id,
+              title: title,
+              price: price,
+              rental: rental,
+              quantity: 1
+            });
+          }
+
+          saveCart(cart);
+
+          // Simple feedback on the button
+          const originalText = btn.textContent;
+          btn.textContent = 'Added!';
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 800);
+        });
+      });
+    });
+  })();
+
+        </script>
 </body>
 </html>
