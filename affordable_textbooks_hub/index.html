@@ -172,7 +172,7 @@
 <!-- CART + THEME SCRIPTS -->
 <script>
   (function () {
-    const CART_KEY = 'eduverseCart'; // must match the store page
+    const CART_KEY = 'eduverse_cart'; // must match store page
     const SHIPPING_FLAT = 5;
 
     function loadCart() {
@@ -190,7 +190,7 @@
     }
 
     function getCartCount(cart) {
-      return cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+      return cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     }
 
     function formatMoney(value) {
@@ -212,7 +212,7 @@
 
       const subtotal = cart.reduce((sum, item) => {
         const price = Number(item.price) || 0;
-        const qty = Number(item.qty) || 1;
+        const qty = Number(item.quantity) || 1;
         return sum + price * qty;
       }, 0);
 
@@ -249,7 +249,7 @@
       if (emptyState) emptyState.classList.add('hidden');
 
       container.innerHTML = cart.map(item => {
-        const qty = item.qty || 1;
+        const qty = item.quantity || 1;
         const price = Number(item.price) || 0;
         const lineTotal = price * qty;
 
@@ -332,7 +332,7 @@
         const cart = loadCart();
         const item = cart.find(p => p.id === id);
         if (item) {
-          item.qty = value;
+          item.quantity = value;
           saveCart(cart);
           renderCartItems();
         }
@@ -346,111 +346,6 @@
   })();
 </script>
 
-<!-- 🌙 DARK MODE SCRIPT -->
-<script>
-  (function () {
-    const html = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const icon = document.getElementById('theme-icon');
-    if (!btn || !icon) return;
 
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      html.classList.add('dark');
-    }
-
-    function updateIcon() {
-      icon.textContent = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
-    }
-    updateIcon();
-
-    btn.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      const mode = html.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', mode);
-      updateIcon();
-    });
-  })();
-</script>
-        <script>
-  (function () {
-    // ---- Helpers to load & save cart ----
-    function getCart() {
-      try {
-        return JSON.parse(localStorage.getItem('eduverse_cart')) || [];
-      } catch (e) {
-        return [];
-      }
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('eduverse_cart', JSON.stringify(cart));
-      updateCartCount(cart);
-    }
-
-    // ---- Update cart badge (if you add one) ----
-    function updateCartCount(cart) {
-      const countEl = document.querySelector('[data-cart-count]');
-      if (!countEl) return; // safe if you don't have a badge yet
-
-      const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
-      countEl.textContent = totalQty;
-
-      // Hide badge when empty (optional)
-      if (totalQty === 0) {
-        countEl.classList.add('hidden');
-      } else {
-        countEl.classList.remove('hidden');
-      }
-    }
-
-    // ---- Wire up Add to Cart buttons ----
-    document.addEventListener('DOMContentLoaded', function () {
-      const buttons = document.querySelectorAll('.add-to-cart');
-      if (!buttons.length) return;
-
-      // Initialize badge from saved cart
-      updateCartCount(getCart());
-
-      buttons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const id = btn.dataset.id;
-          const title = btn.dataset.title;
-          const price = parseFloat(btn.dataset.price || '0');
-          const rental = btn.dataset.rental ? parseFloat(btn.dataset.rental) : null;
-
-          if (!id) return; // safety check
-
-          let cart = getCart();
-          const existing = cart.find(item => item.id === id);
-
-          if (existing) {
-            existing.quantity += 1;
-          } else {
-            cart.push({
-              id: id,
-              title: title,
-              price: price,
-              rental: rental,
-              quantity: 1
-            });
-          }
-
-          saveCart(cart);
-
-          // Simple feedback on the button
-          const originalText = btn.textContent;
-          btn.textContent = 'Added!';
-          btn.disabled = true;
-          setTimeout(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
-          }, 800);
-        });
-      });
-    });
-  })();
-
-        </script>
 </body>
 </html>
