@@ -79,9 +79,17 @@
 
   
 <a href="../affordable_textbooks_hub/"
-   class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-  <i class="fa fa-shopping-cart text-lg"></i>
+   class="relative flex items-center justify-center h-10 w-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
+  <span class="material-symbols-outlined">shopping_cart</span>
+
+  <!-- cart badge (optional, will work with the JS you already have) -->
+  <span
+    data-cart-count
+    class="absolute -top-1 -right-1 hidden bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+    0
+  </span>
 </a>
+
 
 </div>
 
@@ -214,7 +222,15 @@
                   <p class="text-sm text-gray-600 dark:text-gray-400">Rental: $15/semester</p>
                 </div>
                 <div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 50%!</div>
-                <button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
+                <button
+  class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300 add-to-cart"
+  data-id="intro-psych"
+  data-title="Introduction to Psychology"
+  data-price="40.00"
+  data-rental="15.00">
+  Add to Cart
+</button>
+
                 <a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
               </div>
             </div>
@@ -233,7 +249,15 @@
                   <p class="text-sm text-gray-600 dark:text-gray-400">Rental: $30/semester</p>
                 </div>
                 <div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save OVER 70%!</div>
-                <button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
+               <button
+  class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300 add-to-cart"
+  data-id="calc-early-trans"
+  data-title="Calculus: Early Transcendentals"
+  data-price="40.00"
+  data-rental="30.00">
+  Add to Cart
+</button>
+
                 <a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
               </div>
             </div>
@@ -251,7 +275,15 @@
                   <p class="text-sm text-gray-600 dark:text-gray-400">Rental: $30/semester</p>
                 </div>
                 <div class="bg-secondary/20 text-secondary-dark font-bold text-center py-1 rounded text-sm mb-3">Save 60%!</div>
-                <button class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300">Add to Cart</button>
+               <button
+  class="w-full bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary/90 transition duration-300 add-to-cart"
+  data-id="organic-chem"
+  data-title="Organic Chemistry"
+  data-price="40.00"
+  data-rental="30.00">
+  Add to Cart
+</button>
+
                 <a class="block text-center text-primary text-sm mt-2 hover:underline" href="#">View Details</a>
               </div>
             </div>
@@ -360,5 +392,86 @@
   })();
 </script>
 
+  <script>
+  (function () {
+    // ---- Helpers to load & save cart ----
+    function getCart() {
+      try {
+        return JSON.parse(localStorage.getItem('eduverse_cart')) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('eduverse_cart', JSON.stringify(cart));
+      updateCartCount(cart);
+    }
+
+    // ---- Update cart badge (if you add one) ----
+    function updateCartCount(cart) {
+      const countEl = document.querySelector('[data-cart-count]');
+      if (!countEl) return; // safe if you don't have a badge yet
+
+      const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+      countEl.textContent = totalQty;
+
+      // Hide badge when empty (optional)
+      if (totalQty === 0) {
+        countEl.classList.add('hidden');
+      } else {
+        countEl.classList.remove('hidden');
+      }
+    }
+
+    // ---- Wire up Add to Cart buttons ----
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.add-to-cart');
+      if (!buttons.length) return;
+
+      // Initialize badge from saved cart
+      updateCartCount(getCart());
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const id = btn.dataset.id;
+          const title = btn.dataset.title;
+          const price = parseFloat(btn.dataset.price || '0');
+          const rental = btn.dataset.rental ? parseFloat(btn.dataset.rental) : null;
+
+          if (!id) return; // safety check
+
+          let cart = getCart();
+          const existing = cart.find(item => item.id === id);
+
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({
+              id: id,
+              title: title,
+              price: price,
+              rental: rental,
+              quantity: 1
+            });
+          }
+
+          saveCart(cart);
+
+          // Simple feedback on the button
+          const originalText = btn.textContent;
+          btn.textContent = 'Added!';
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 800);
+        });
+      });
+    });
+  })();
+</script>
+
+  
 </body>
 </html>
