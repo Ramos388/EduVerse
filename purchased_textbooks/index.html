@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Purchased Textbooks</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "background-light": "#FFFFFF",
+            "background-dark": "#101922",
+            "panel-light": "#F5F5F5",
+            "panel-dark": "#1a242f",
+            "text-light": "#333333",
+            "text-dark": "#e0e0e0",
+            "accent": "#50E3C2",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="flex flex-col min-h-screen" id="root">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark shadow-md">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary text-3xl">import_contacts</span>
+          <div class="flex flex-col">
+            <h1 class="text-xl font-bold text-text-light dark:text-text-dark">Textbook Store</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Purchased Textbooks</p>
+          </div>
+        </div>
+
+        <!-- NAV LINKS (optional, can tweak later) -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-sm font-medium hover:text-primary" href="../search_textbooks_hubcode/">
+            Store
+          </a>
+          <a class="text-sm font-medium hover:text-primary" href="../student_homepage_with_to-do/">
+            Dashboard
+          </a>
+          <a class="text-sm font-medium hover:text-primary" href="../ai_study_assistant/">
+            Study AI
+          </a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <!-- Cart button with dynamic badge -->
+          <button id="cart-button"
+                  class="relative flex items-center justify-center h-10 w-10 text-text-light dark:text-text-dark hover:text-primary dark:hover:text-primary"
+                  onclick="window.location.href='../affordable_textbooks_hub/'">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <div id="cart-count-badge"
+                 class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              0
+            </div>
+          </button>
+
+          <!-- Dark mode toggle -->
+          <button id="theme-toggle"
+                  class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  aria-label="Toggle dark mode">
+            <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+          </button>
+
+          <!-- Avatar (can customize) -->
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+               data-alt="User profile picture"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAYT1tQ4chaP4iH9L2AScAutifkdvlsz7t0vpkbq-_QEkFd-DDkt6aeDLVZxhN7IYMEGyMSc1pplb8GISJ5xg3yEAsV8ifwTWwtKBvTzyXp1BDrRRVEhay9ciqhIFKyazqvahvdOKgobnpRIL-R0rHWWVJ9r_625zxzKozzA8X7bDtce3GNxDmcAIpKnQSXWwBqj6iaQUX_UoyfY7SWk2eRZB-0vl2NUmhE362wJG5WGx3W1Geblpl78wRWGEu11il_qYRp_wypg06");'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- LEFT: Purchased list -->
+      <section class="lg:col-span-2">
+        <h2 class="text-2xl font-bold mb-2">Your Purchased Textbooks</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+          View all the textbooks you've bought through EduVerse.
+        </p>
+
+        <!-- Empty state -->
+        <div id="purchases-empty"
+             class="hidden mt-6 p-6 rounded-lg bg-panel-light dark:bg-panel-dark text-center text-gray-600 dark:text-gray-300">
+          <p class="text-lg font-semibold mb-2">No purchases yet</p>
+          <p class="text-sm mb-4">Once you buy a textbook, it will appear here.</p>
+          <a href="../search_textbooks_hubcode/"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90">
+            <span class="material-symbols-outlined text-base">search</span>
+            <span>Browse Textbooks</span>
+          </a>
+        </div>
+
+        <!-- Purchases list -->
+        <div id="purchases-list" class="space-y-4">
+          <!-- Filled by JS -->
+        </div>
+      </section>
+
+      <!-- RIGHT: Summary / Cashback -->
+      <aside class="lg:col-span-1 bg-panel-light dark:bg-panel-dark p-6 rounded-lg self-start">
+        <h2 class="text-xl font-bold mb-4">Summary</h2>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex justify-between">
+            <span>Total Spent</span>
+            <span id="total-spent">$0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Textbooks Purchased</span>
+            <span id="total-count">0</span>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-accent">sell</span>
+            Cashback Balance
+          </h3>
+          <p class="text-2xl font-bold text-primary mb-1" id="cashback-balance">$0.00</p>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">
+            Earned from your textbook purchases. You’ll be able to apply this on future checkouts.
+          </p>
+
+          <button
+            class="w-full flex items-center justify-center gap-2 h-10 px-4 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors"
+            onclick="window.location.href='../search_textbooks_hubcode/'">
+            <span class="material-symbols-outlined text-base">shopping_bag</span>
+            <span>Continue Shopping</span>
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-panel-light dark:bg-panel-dark mt-auto py-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 dark:text-gray-400 text-sm">
+      <div class="flex justify-center gap-6 mb-4">
+        <a class="hover:text-primary" href="#">About Us</a>
+        <a class="hover:text-primary" href="#">Contact</a>
+        <a class="hover:text-primary" href="#">Terms of Service</a>
+        <a class="hover:text-primary" href="#">Privacy Policy</a>
+      </div>
+      <p>© 2024 Textbook Finder. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- PURCHASES + CART + CASHBACK SCRIPT -->
+<script>
+  (function () {
+    const CART_KEY = 'eduverse_cart';
+    const PURCHASES_KEY = 'eduverse_purchases';
+    const CASHBACK_KEY = 'eduverse_cashback';
+
+    function formatMoney(value) {
+      return '$' + (Number(value) || 0).toFixed(2);
+    }
+
+    function loadCart() {
+      try {
+        const stored = localStorage.getItem(CART_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function loadPurchases() {
+      try {
+        const stored = localStorage.getItem(PURCHASES_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function loadCashback() {
+      try {
+        const stored = localStorage.getItem(CASHBACK_KEY);
+        return stored ? JSON.parse(stored) : { balance: 0, history: [] };
+      } catch (e) {
+        return { balance: 0, history: [] };
+      }
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cart-count-badge');
+      if (!badge) return;
+      const cart = loadCart();
+      const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      badge.textContent = count;
+    }
+
+    function renderPurchases() {
+      const listEl = document.getElementById('purchases-list');
+      const emptyEl = document.getElementById('purchases-empty');
+      const totalSpentEl = document.getElementById('total-spent');
+      const totalCountEl = document.getElementById('total-count');
+      const cashbackBalanceEl = document.getElementById('cashback-balance');
+
+      const purchases = loadPurchases();
+      const cashback = loadCashback();
+
+      if (!purchases.length) {
+        if (listEl) listEl.innerHTML = '';
+        if (emptyEl) emptyEl.classList.remove('hidden');
+      } else {
+        if (emptyEl) emptyEl.classList.add('hidden');
+
+        const rows = purchases.map((p) => {
+          const price = Number(p.price) || 0;
+          let dateStr = 'Unknown date';
+          if (p.purchasedAt) {
+            try {
+              const d = new Date(p.purchasedAt);
+              dateStr = d.toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              });
+            } catch (_) {}
+          }
+
+          return `
+            <div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4">
+              <div class="w-12 h-16 flex items-center justify-center rounded bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-700">
+                <span class="material-symbols-outlined text-primary">menu_book</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-md text-text-light dark:text-text-dark">
+                  ${p.title || 'Untitled Textbook'}
+                </h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  Purchased: ${dateStr}
+                </p>
+              </div>
+              <div class="text-right">
+                <p class="text-lg font-bold text-primary">
+                  ${formatMoney(price)}
+                </p>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        if (listEl) {
+          listEl.innerHTML = rows;
+        }
+      }
+
+      // Summary
+      const totalSpent = purchases.reduce((sum, p) => sum + (Number(p.price) || 0), 0);
+      if (totalSpentEl) totalSpentEl.textContent = formatMoney(totalSpent);
+      if (totalCountEl) totalCountEl.textContent = purchases.length;
+      if (cashbackBalanceEl) cashbackBalanceEl.textContent = formatMoney(cashback.balance || 0);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      renderPurchases();
+    });
+  })();
+</script>
+
+<!-- DARK MODE SCRIPT -->
+<script>
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    if (!btn || !icon) return;
+
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      html.classList.add('dark');
+    }
+
+    function updateIcon() {
+      icon.textContent = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    }
+    updateIcon();
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const mode = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', mode);
+      updateIcon();
+    });
+  })();
+</script>
+
+</body>
+</html>
