@@ -378,6 +378,47 @@
   })();
 </script>
 
+  <script>
+const CART_KEY = 'eduverse_cart';
+const PURCHASES_KEY = 'eduverse_purchases';
+const CASHBACK_KEY = 'eduverse_cashback';
+
+function checkout() {
+  const cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+  if (!cart.length) return;
+
+  const now = new Date().toISOString();
+
+  // 1. Move items → purchases
+  const existingPurchases = JSON.parse(localStorage.getItem(PURCHASES_KEY) || '[]');
+  const newPurchases = cart.map(item => ({
+    id: item.id,
+    title: item.title,
+    price: item.price,
+    purchasedAt: now
+  }));
+
+  localStorage.setItem(PURCHASES_KEY, JSON.stringify([...existingPurchases, ...newPurchases]));
+
+  // 2. Update cashback
+  const subtotal = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
+  const cashbackEarned = subtotal * 0.10;
+
+  const cb = JSON.parse(localStorage.getItem(CASHBACK_KEY) || '{"balance":0,"history":[]}');
+  cb.balance += cashbackEarned;
+  cb.history.push({ amount: cashbackEarned, date: now, source: 'Textbook Purchase' });
+  localStorage.setItem(CASHBACK_KEY, JSON.stringify(cb));
+
+  // 3. Clear the cart
+  localStorage.removeItem(CART_KEY);
+
+  // 4. Redirect to Purchased Textbooks page
+  window.location.href = '../purchased_textbooks/';
+}
+
+document.getElementById('checkout-button')?.addEventListener('click', checkout);
+</script>
+
   
 </body>
 </html>
