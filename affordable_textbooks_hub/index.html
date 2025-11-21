@@ -110,49 +110,52 @@
         </div>
       </div>
 
-      <aside class="lg:col-span-1 bg-panel-light dark:bg-panel-dark p-6 rounded-lg self-start">
-        <h2 class="text-xl font-bold mb-4">Order Summary</h2>
-        <div class="space-y-3">
-          <div class="flex justify-between">
-            <span>Subtotal</span>
-            <span id="subtotal-amount">$0.00</span>
-          </div>
-          <div class="flex justify-between">
-            <span>Shipping</span>
-            <span id="shipping-amount">$0.00</span>
-          </div>
-          <div class="flex justify-between text-lg font-bold">
-            <span>Total</span>
-            <span id="total-amount">$0.00</span>
-          </div>
-        </div>
+     <aside class="lg:col-span-1 bg-panel-light dark:bg-panel-dark p-6 rounded-lg self-start">
+  <h2 class="text-xl font-bold mb-2">Order Summary</h2>
 
-        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <div class="bg-green-100 dark:bg-green-900/50 border border-green-500 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg relative"
-               role="alert">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-green-500">sell</span>
-              <div>
-                <p class="font-bold">You're earning 10% cashback!</p>
-                <p class="text-sm">
-                  You will get
-                  <span id="cashback-amount" class="font-bold">$0.00</span>
-                  in credits for your next purchase.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- 💰 Cashback block -->
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <p class="text-sm font-medium">Cash Back</p>
+      <p id="available-cashback" class="text-sm text-gray-600 dark:text-gray-300">$0.00</p>
+    </div>
+    <button
+      id="apply-cashback-toggle"
+      type="button"
+      class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-primary text-primary bg-transparent hover:bg-primary/10 transition-colors"
+    >
+      Use
+    </button>
+  </div>
 
-        <button id="checkout-button"
-                class="mt-6 w-full flex items-center justify-center gap-2 h-12 px-6 rounded-lg bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
-          <span class="material-symbols-outlined">lock</span>
-          <span>Proceed to Checkout</span>
-        </button>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-          Your cashback credits can be applied to any future textbook purchases or rentals on our platform.
-        </p>
-      </aside>
+  <div class="space-y-3">
+    <div class="flex justify-between">
+      <span>Subtotal</span>
+      <span id="subtotal-amount">$0.00</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Shipping</span>
+      <span id="shipping-amount">$0.00</span>
+    </div>
+
+    <!-- Row that shows how much cashback is actually applied -->
+    <div
+      id="cashback-applied-row"
+      class="flex justify-between text-sm text-green-600 dark:text-green-300 hidden"
+    >
+      <span>Cashback Applied</span>
+      <span id="cashback-applied-amount">- $0.00</span>
+    </div>
+
+    <div class="flex justify-between text-lg font-bold">
+      <span>Total</span>
+      <span id="total-amount">$0.00</span>
+    </div>
+  </div>
+  ...
+</aside>
+
     </div>
   </main>
 
@@ -172,8 +175,12 @@
 <!-- CART + THEME SCRIPTS -->
 <script>
   (function () {
-    const CART_KEY = 'eduverse_cart'; // must match store page
+    const CART_KEY = 'eduverse_cart';          // cart items
+    const CASHBACK_BALANCE_KEY = 'eduverse_cashback_balance'; // wallet balance
     const SHIPPING_FLAT = 5;
+
+    // whether user wants to use cashback on this order
+    let useCashback = false;
 
     function loadCart() {
       try {
@@ -187,6 +194,16 @@
 
     function saveCart(cart) {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function loadCashbackBalance() {
+      try {
+        const stored = localStorage.getItem(CASHBACK_BALANCE_KEY);
+        return stored ? Number(stored) || 0 : 0;
+      } catch (e) {
+        console.error('Error loading cashback balance:', e);
+        return 0;
+      }
     }
 
     function getCartCount(cart) {
@@ -207,7 +224,10 @@
       const subtotalSpan = document.getElementById('subtotal-amount');
       const shippingSpan = document.getElementById('shipping-amount');
       const totalSpan = document.getElementById('total-amount');
-      const cashbackSpan = document.getElementById('cashback-amount');
+      const cashbackSpan = document.getElementById('cashback-amount'); // 10% earned this order
+      const availableCbSpan = document.getElementById('available-cashback');
+      const cashbackAppliedRow = document.getElementById('cashback-applied-row');
+      const cashbackAppliedAmountSpan = document.getElementById('cashback-applied-amount');
       const checkoutBtn = document.getElementById('checkout-button');
 
       const subtotal = cart.reduce((sum, item) => {
@@ -217,13 +237,39 @@
       }, 0);
 
       const shipping = subtotal > 0 ? SHIPPING_FLAT : 0;
-      const total = subtotal + shipping;
-      const cashback = subtotal * 0.10; // 10% cashback
+      const cashbackBalance = loadCashbackBalance();
+      const earnedThisOrder = subtotal * 0.10; // 10% cashback
+
+      // How much cashback we actually apply to this purchase
+      const appliedCashback = useCashback
+        ? Math.min(cashbackBalance, subtotal + shipping)
+        : 0;
+
+      const total = subtotal + shipping - appliedCashback;
 
       if (subtotalSpan) subtotalSpan.textContent = formatMoney(subtotal);
       if (shippingSpan) shippingSpan.textContent = formatMoney(shipping);
       if (totalSpan) totalSpan.textContent = formatMoney(total);
-      if (cashbackSpan) cashbackSpan.textContent = formatMoney(cashback);
+
+      // show "wallet" cashback under "Cash Back"
+      if (availableCbSpan) {
+        availableCbSpan.textContent = formatMoney(cashbackBalance);
+      }
+
+      // show "Cashback Applied" row only if we actually applied some
+      if (cashbackAppliedRow && cashbackAppliedAmountSpan) {
+        if (appliedCashback > 0) {
+          cashbackAppliedRow.classList.remove('hidden');
+          cashbackAppliedAmountSpan.textContent = '- ' + formatMoney(appliedCashback);
+        } else {
+          cashbackAppliedRow.classList.add('hidden');
+        }
+      }
+
+      // existing: show 10% you’ll earn from THIS order in the green card
+      if (cashbackSpan) {
+        cashbackSpan.textContent = formatMoney(earnedThisOrder);
+      }
 
       if (checkoutBtn) {
         checkoutBtn.disabled = subtotal === 0;
@@ -294,6 +340,7 @@
         `;
       }).join('');
 
+      const cart = loadCart();
       updateCartBadge(cart);
       updateSummary(cart);
     }
@@ -342,9 +389,32 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderCartItems();
       attachCartHandlers();
+
+      // 🔘 Cashback toggle behavior
+      const toggle = document.getElementById('apply-cashback-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          useCashback = !useCashback;
+
+          // toggle button styles + label
+          if (useCashback) {
+            toggle.textContent = 'Using';
+            toggle.classList.remove('bg-transparent', 'text-primary');
+            toggle.classList.add('bg-primary', 'text-white');
+          } else {
+            toggle.textContent = 'Use';
+            toggle.classList.remove('bg-primary', 'text-white');
+            toggle.classList.add('bg-transparent', 'text-primary');
+          }
+
+          const cart = loadCart();
+          updateSummary(cart);
+        });
+      }
     });
   })();
 </script>
+
 
 <!-- 🌙 DARK MODE SCRIPT -->
 <script>
