@@ -472,6 +472,85 @@
   })();
 </script>
 
+<script>
+  (function () {
+    const CART_KEY = 'eduverse_cart';
+
+    function getCart() {
+      try {
+        const raw = localStorage.getItem(CART_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        console.error('Error reading cart:', e);
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      updateCartBadge(cart);
+    }
+
+    function updateCartBadge(cart) {
+      const badge = document.getElementById('cart-count-badge');
+      if (!badge) return;
+
+      const totalQty = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      badge.textContent = totalQty;
+
+      // optional: hide when empty
+      if (totalQty === 0) {
+        badge.classList.add('hidden');
+      } else {
+        badge.classList.remove('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // initialize badge from existing cart
+      updateCartBadge(getCart());
+
+      const buttons = document.querySelectorAll('.add-to-cart');
+      if (!buttons.length) return;
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', function () {
+          const id = btn.dataset.id;
+          const title = btn.dataset.title || 'Untitled';
+          const price = parseFloat(btn.dataset.price || '0');
+
+          if (!id) return;
+
+          let cart = getCart();
+          const existing = cart.find(item => item.id === id);
+
+          if (existing) {
+            existing.quantity = (existing.quantity || 1) + 1;
+          } else {
+            cart.push({
+              id: id,
+              title: title,
+              price: price,
+              quantity: 1
+            });
+          }
+
+          saveCart(cart);
+
+          // quick visual feedback
+          const originalText = btn.textContent;
+          btn.textContent = 'Added!';
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 700);
+        });
+      });
+    });
+  })();
+</script>
+
   
 </body>
 </html>
