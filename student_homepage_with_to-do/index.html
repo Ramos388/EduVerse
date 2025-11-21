@@ -103,159 +103,137 @@
 </div>
 </header>
 <main class="flex-1">
-  <div class="container mx-auto px-6 py-8">
+<!-- 📚 Assignments Section -->
+<section class="mt-8">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-xl font-bold">Assignments</h2>
+    <button
+      id="new-assignment-btn"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors"
+    >
+      <span class="material-symbols-outlined text-sm">add</span>
+      <span>New Assignment</span>
+    </button>
+  </div>
 
-    <!-- Header row -->
-    <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
-      <div class="flex min-w-72 flex-col gap-1">
-        <p class="text-primary dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">Welcome back, Kevin!</p>
-        <p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Here's what you have going on.</p>
-      </div>
-      <div class="flex gap-2">
-        <button class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-accent-teal text-white font-bold text-sm hover:bg-accent-teal/90 transition-colors">
-          <span class="material-symbols-outlined text-lg">add</span>
-          <span>New Assignment</span>
-        </button>
-      </div>
+  <!-- Empty state -->
+  <div
+    id="assignments-empty"
+    class="mt-4 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-6 text-center text-sm text-gray-500 dark:text-gray-400"
+  >
+    No assignments yet. Click <span class="font-semibold">New Assignment</span> to get started.
+  </div>
+
+  <!-- Assignment list -->
+  <div id="assignments-list" class="space-y-3 mt-4 hidden">
+    <!-- cards injected by JS -->
+  </div>
+</section>
+
+    <!-- ✏️ New Assignment Form (hidden by default) -->
+<div
+  id="assignment-form-wrapper"
+  class="fixed inset-0 bg-black/40 flex items-center justify-center z-40 hidden"
+>
+  <div class="bg-background-light dark:bg-background-dark rounded-xl shadow-lg w-full max-w-lg p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-bold">New Assignment</h3>
+      <button
+        id="close-assignment-form"
+        class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
     </div>
 
-    <!-- Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <form id="assignment-form" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1" for="assignment-title">
+          Title
+        </label>
+        <input
+          id="assignment-title"
+          type="text"
+          required
+          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
+          placeholder="Chapter 3 Quiz, Midterm Exam, Research Paper..."
+        />
+      </div>
 
-      <!-- LEFT: col-span-2 -->
-      <div class="lg:col-span-2">
-        <!-- Upcoming Assignments -->
-        <div class="bg-white dark:bg-background-dark/50 rounded-xl shadow-sm p-6">
-          <h2 class="text-primary dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Your Upcoming Assignments</h2>
+      <div>
+        <label class="block text-sm font-medium mb-1" for="assignment-course">
+          Course
+        </label>
+        <input
+          id="assignment-course"
+          type="text"
+          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
+          placeholder="ECO 101, BIO 12, INFO 015..."
+        />
+      </div>
 
-          <div class="space-y-3">
-            <div class="flex items-center p-4 rounded-lg bg-background-light dark:bg-gray-800/50 transition-all hover:shadow-md">
-              <input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 bg-transparent text-accent-teal focus:ring-accent-teal" type="checkbox"/>
-              <div class="ml-4 flex-1">
-                <p class="text-gray-800 dark:text-gray-200 font-medium">Finish Chapter 3 reading for Psychology 101.</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Psychology 101</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Due in 2 days</span>
-                <span class="material-symbols-outlined text-gray-400 dark:text-gray-500 cursor-pointer" data-alt="Link to textbook">link</span>
-              </div>
-            </div>
-
-            <div class="flex items-center p-4 rounded-lg bg-background-light dark:bg-gray-800/50 transition-all hover:shadow-md">
-              <input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 bg-transparent text-accent-teal focus:ring-accent-teal" type="checkbox"/>
-              <div class="ml-4 flex-1">
-                <p class="text-gray-800 dark:text-gray-200 font-medium">Complete Math 202 problem set.</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Mathematics 202</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-accent-orange">Due Tomorrow</span>
-                <span class="material-symbols-outlined text-gray-400 dark:text-gray-500 cursor-pointer" data-alt="Link to textbook">link</span>
-              </div>
-            </div>
-
-            <div class="flex items-center p-4 rounded-lg bg-background-light dark:bg-gray-800/50 transition-all hover:shadow-md">
-              <input checked class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 bg-transparent text-accent-teal focus:ring-accent-teal" type="checkbox"/>
-              <div class="ml-4 flex-1">
-                <p class="text-gray-500 dark:text-gray-400 font-medium line-through">Start research for History 350 essay.</p>
-                <p class="text-sm text-gray-400 dark:text-gray-500 line-through">History 350</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 line-through">Due in 5 days</span>
-                <span class="material-symbols-outlined text-gray-400 dark:text-gray-500 cursor-pointer" data-alt="Link to textbook">link</span>
-              </div>
-            </div>
-
-            <div class="flex items-center p-4 rounded-lg bg-background-light dark:bg-gray-800/50 transition-all hover:shadow-md">
-              <input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 bg-transparent text-accent-teal focus:ring-accent-teal" type="checkbox"/>
-              <div class="ml-4 flex-1">
-                <p class="text-gray-800 dark:text-gray-200 font-medium">Lab Report for Chemistry 102.</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Chemistry 102</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Due in 1 week</span>
-                <span class="material-symbols-outlined text-gray-400 dark:text-gray-500 cursor-pointer" data-alt="Link to textbook">link</span>
-              </div>
-            </div>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="assignment-due">
+            Due Date
+          </label>
+          <input
+            id="assignment-due"
+            type="date"
+            class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
+          />
         </div>
 
-        <!-- Continue Reading -->
-        <div class="mt-8">
-          <h2 class="text-primary dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Continue Reading</h2>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <div class="flex flex-col gap-2 group cursor-pointer">
-              <div class="aspect-[2/3] w-full bg-neutral-gray rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                <img class="w-full h-full object-cover" data-alt="Introduction to Psychology textbook cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6-3aNgnclMM3FL3E38Pjr_zMcE_Wxke_wxH2b6rgMtXUhB1Jlv_XsNMrKO_bYRvKr0XswjmQUTYTqhRrxwlTU0BRe_iYgLdfA5O23RNJ4n5Vs4PwjIij1cRFGN8AFejLYAHDz1ihvJ5K8ziekOU7AwZwANUb7c36ewBPGvNePMp89DTD9OqECu4U6BRKZpASe2jaBCc04j1Z6gGfl0uEaGSKCKKzgTPnyfzQMS1EvvmrNG4jh46dCE7LmGxEqcWDRoKdYFRTjjBRW" />
-              </div>
-              <h3 class="font-medium text-gray-800 dark:text-gray-200 text-sm truncate">Introduction to Psychology</h3>
-            </div>
-
-            <div class="flex flex-col gap-2 group cursor-pointer">
-              <div class="aspect-[2/3] w-full bg-neutral-gray rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                <img class="w-full h-full object-cover" data-alt="Calculus II textbook cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ8vGrk0ZD0dPUNxFQcM0wyWaX3wlYKTaZAjJ3A47lKnIBgQiRwvM--pP3y82t6UO2n5FHjguaT_N5i-jjlrJB1JNxAo_onqtZE4ppGbR6gNDXlZeohW7pJx08lrrA0ITIDKbHUAJZU37f1d7_FbUaoZhvTMCZ-dfXMvdt8sRLSn12A2coWJUPRKgNZTjdRRPkUGJjLNqGTT2vJ2LvCQ5O5tm6kUGK3CJAasFuo4AvtGIjbXbNLIgARffm9IpQi332E28Uu-rhnX3o" />
-              </div>
-              <h3 class="font-medium text-gray-800 dark:text-gray-200 text-sm truncate">Calculus II</h3>
-            </div>
-
-            <div class="flex flex-col gap-2 group cursor-pointer">
-              <div class="aspect-[2/3] w-full bg-neutral-gray rounded
-
-```html
-rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                <img class="w-full h-full object-cover" data-alt="World History textbook cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaJvq1ItkntzGf0jCCLaYo77aXvLMW54Iwx7yZtO60_tnx-5WuA4ipxvNv-uJBWSD_DkJYF8f5_WwpQZKXTMjhEU8j0XZ1sGI2sfgymucjzNBZN4RW8dryM3Bpx-Ultida4zUFefXfIG3DBVEMXHM9lfPMcY18UaHOIXY8JTgstrpnoloqsKgTRrQJ3-af4rhD3fd6DO1hr9yW_7zLnH7phufmTmknr27iuA2jidpLtefhyiLRWy2mgZoskNj5TtnoXAL6Yf-NVEMR" />
-              </div>
-              <h3 class="font-medium text-gray-800 dark:text-gray-200 text-sm truncate">World History: 1500-Present</h3>
-            </div>
-
-            <div class="flex flex-col gap-2 group cursor-pointer">
-              <div class="aspect-[2/3] w-full bg-neutral-gray rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                <img class="w-full h-full object-cover" data-alt="Organic Chemistry textbook cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDssWcwtZ1_ZM8POr6FprXVNDFPhD_atm8xlESzCgzo3Sbjxot5EaLWAZ7d4pm0Csny1k0sdCJmhUDRW2ujzO8SczurcxG75dHPCboj5rxmhIyNmIuMn1oezvtUNCoTz1_9dqs0RPKssQj5tkxwpKgmusM1xpeNjjbE11ab6ieCOGbswovV9CuEEqxoi2r9R8h4ipE7o529I9M5c8qlLn0eKujN-NNGz1HS328prUUb6U3uyDEXn5cACAda6XADQAMWYgjpGbzvETZy" />
-              </div>
-              <h3 class="font-medium text-gray-800 dark:text-gray-200 text-sm truncate">Organic Chemistry</h3>
-            </div>
-          </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="assignment-type">
+            Type
+          </label>
+          <select
+            id="assignment-type"
+            class="form-select w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
+          >
+            <option value="Homework">Homework</option>
+            <option value="Reading">Reading</option>
+            <option value="Quiz">Quiz</option>
+            <option value="Exam">Exam</option>
+            <option value="Project">Project</option>
+            <option value="Other" selected>Other</option>
+          </select>
         </div>
       </div>
 
-      <!-- RIGHT: col-span-1 -->
-      <div class="lg:col-span-1 space-y-8">
-        <div class="bg-white dark:bg-background-dark/50 rounded-xl shadow-sm p-6">
-          <h2 class="text-primary dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Quick Links</h2>
-          <div class="space-y-3">
-            <a class="flex items-center p-3 rounded-lg bg-background-light dark:bg-gray-800/50 hover:bg-neutral-gray/50 dark:hover:bg-gray-700/50 transition-colors"
-               href="../search_textbooks_hubcode/">
-                  <span class="material-symbols-outlined text-primary dark:text-accent-teal text-2xl">search</span>
-                  <span class="ml-4 font-medium text-gray-700 dark:text-gray-300">Find a Textbook</span>
-            </a>
-
-            <a class="flex items-center p-3 rounded-lg bg-background-light dark:bg-gray-800/50 hover:bg-neutral-gray/50 dark:hover:bg-gray-700/50 transition-colors"
-               href="../ai_study_assistant/">
-              <span class="material-symbols-outlined text-primary dark:text-accent-teal text-2xl">auto_awesome</span>
-              <span class="ml-4 font-medium text-gray-700 dark:text-gray-300">Ask the Study AI</span>
-            </a>
-
-            <a class="flex items-center p-3 rounded-lg bg-background-light dark:bg-gray-800/50 hover:bg-neutral-gray/50 dark:hover:bg-gray-700/50 transition-colors"
-               href="../my_textbook_library/">
-              <span class="material-symbols-outlined text-primary dark:text-accent-teal text-2xl">library_books</span>
-              <span class="ml-4 font-medium text-gray-700 dark:text-gray-300">My Textbooks</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="bg-primary/10 dark:bg-primary/20 rounded-xl shadow-sm p-6">
-          <div class="flex justify-between items-start">
-            <h2 class="text-primary dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-2">Important Updates</h2>
-            <button class="text-primary/50 dark:text-white/50 hover:text-primary dark:hover:text-white transition-colors">
-              <span class="material-symbols-outlined text-xl">close</span>
-            </button>
-          </div>
-          <p class="text-gray-700 dark:text-gray-300 text-sm">The library will be closed this Friday for maintenance. Online resources will still be available.</p>
-        </div>
+      <div>
+        <label class="block text-sm font-medium mb-1" for="assignment-notes">
+          Notes (optional)
+        </label>
+        <textarea
+          id="assignment-notes"
+          rows="3"
+          class="form-textarea w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
+          placeholder="Any extra details, chapter numbers, professor notes..."
+        ></textarea>
       </div>
 
-    </div> <!-- end grid -->
+      <div class="flex justify-end gap-3 pt-2">
+        <button
+          type="button"
+          id="cancel-assignment"
+          class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90"
+        >
+          Save Assignment
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
-  </div> <!-- end container -->
+    
 </main>
 
 </div> <!-- closes .layout-container -->
@@ -289,5 +267,199 @@ rounded-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
   })();
 </script>
 
+
+<script>
+  (function () {
+    const ASSIGNMENTS_KEY = 'eduverse_assignments';
+
+    function loadAssignments() {
+      try {
+        const raw = localStorage.getItem(ASSIGNMENTS_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        console.error('Error loading assignments', e);
+        return [];
+      }
+    }
+
+    function saveAssignments(list) {
+      localStorage.setItem(ASSIGNMENTS_KEY, JSON.stringify(list));
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return 'No due date';
+      const d = new Date(dateStr + 'T00:00:00');
+      if (isNaN(d.getTime())) return 'No due date';
+      return d.toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+
+    function renderAssignments() {
+      const listEl = document.getElementById('assignments-list');
+      const emptyEl = document.getElementById('assignments-empty');
+      if (!listEl || !emptyEl) return;
+
+      const assignments = loadAssignments();
+
+      if (!assignments.length) {
+        listEl.classList.add('hidden');
+        emptyEl.classList.remove('hidden');
+        listEl.innerHTML = '';
+        return;
+      }
+
+      emptyEl.classList.add('hidden');
+      listEl.classList.remove('hidden');
+
+      listEl.innerHTML = assignments
+        .sort((a, b) => {
+          // sort by due date, then title
+          if (a.dueDate && b.dueDate && a.dueDate !== b.dueDate) {
+            return a.dueDate.localeCompare(b.dueDate);
+          }
+          return (a.title || '').localeCompare(b.title || '');
+        })
+        .map((item) => {
+          const badgeColor =
+            item.type === 'Exam' || item.type === 'Quiz'
+              ? 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300'
+              : item.type === 'Project'
+              ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300'
+              : 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300';
+
+          return `
+          <article
+            class="flex items-start justify-between gap-4 rounded-lg bg-panel-light dark:bg-panel-dark px-4 py-3"
+            data-id="${item.id}"
+          >
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-semibold text-sm md:text-base">${item.title || 'Untitled assignment'}</h3>
+                <span class="text-[10px] px-2 py-0.5 rounded-full ${badgeColor}">
+                  ${item.type || 'Other'}
+                </span>
+              </div>
+              <p class="text-xs text-gray-500 dark:text-gray-400">
+                ${item.course ? `<span class="font-medium">${item.course}</span> · ` : ''}
+                Due: ${formatDate(item.dueDate)}
+              </p>
+              ${
+                item.notes
+                  ? `<p class="mt-1 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">${item.notes}</p>`
+                  : ''
+              }
+            </div>
+            <button
+              class="text-xs text-gray-400 hover:text-red-500 mt-1 remove-assignment"
+            >
+              <span class="material-symbols-outlined text-base">delete</span>
+            </button>
+          </article>
+        `;
+        })
+        .join('');
+    }
+
+    function openForm() {
+      const wrap = document.getElementById('assignment-form-wrapper');
+      const form = document.getElementById('assignment-form');
+      if (!wrap || !form) return;
+      // Reset form
+      form.reset();
+      wrap.classList.remove('hidden');
+    }
+
+    function closeForm() {
+      const wrap = document.getElementById('assignment-form-wrapper');
+      if (!wrap) return;
+      wrap.classList.add('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const newBtn = document.getElementById('new-assignment-btn');
+      const cancelBtn = document.getElementById('cancel-assignment');
+      const closeBtn = document.getElementById('close-assignment-form');
+      const form = document.getElementById('assignment-form');
+      const listEl = document.getElementById('assignments-list');
+      const overlay = document.getElementById('assignment-form-wrapper');
+
+      renderAssignments();
+
+      if (newBtn) {
+        newBtn.addEventListener('click', openForm);
+      }
+
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeForm);
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeForm);
+      }
+
+      if (overlay) {
+        // click on dark background closes
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeForm();
+        });
+      }
+
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const title = document.getElementById('assignment-title')?.value.trim();
+          const course = document.getElementById('assignment-course')?.value.trim();
+          const dueDate = document.getElementById('assignment-due')?.value;
+          const type = document.getElementById('assignment-type')?.value || 'Other';
+          const notes = document.getElementById('assignment-notes')?.value.trim();
+
+          if (!title) {
+            alert('Please enter a title for the assignment.');
+            return;
+          }
+
+          const assignments = loadAssignments();
+          assignments.push({
+            id: 'a_' + Date.now(),
+            title,
+            course,
+            dueDate,
+            type,
+            notes,
+            source: 'manual'
+          });
+
+          saveAssignments(assignments);
+          renderAssignments();
+          closeForm();
+        });
+      }
+
+      if (listEl) {
+        // remove assignment
+        listEl.addEventListener('click', (e) => {
+          const btn = e.target.closest('.remove-assignment');
+          if (!btn) return;
+
+          const card = btn.closest('[data-id]');
+          if (!card) return;
+
+          const id = card.getAttribute('data-id');
+          if (!id) return;
+
+          let assignments = loadAssignments();
+          assignments = assignments.filter((a) => a.id !== id);
+          saveAssignments(assignments);
+          renderAssignments();
+        });
+      }
+    });
+  })();
+</script>
+
+    
 </body>
 </html>
