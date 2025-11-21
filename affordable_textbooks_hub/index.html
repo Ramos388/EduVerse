@@ -47,45 +47,72 @@
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
 <div class="flex flex-col min-h-screen" id="root">
-  <header class="sticky top-0 z-50 bg-background-light dark:bg-background-dark shadow-md">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-4">
-          <span class="material-symbols-outlined text-primary text-3xl">import_contacts</span>
-          <h1 class="text-xl font-bold text-text-light dark:text-text-dark">Textbook Store</h1>
-        </div>
-        <nav class="hidden md:flex items-center gap-8">
-          <a class="text-sm font-medium text-primary" href="#">Store</a>
-          <a class="text-sm font-medium hover:text-primary" href="#">My Library</a>
-          <a class="text-sm font-medium hover:text-primary" href="#">Study AI</a>
-        </nav>
-        <div class="flex items-center gap-4">
-
-          <!-- Cart button with dynamic badge -->
-          <button id="cart-button"
-                  class="relative flex items-center justify-center h-10 w-10 text-text-light dark:text-text-dark hover:text-primary dark:hover:text-primary">
-            <span class="material-symbols-outlined">shopping_cart</span>
-            <div id="cart-count-badge"
-                 class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-              0
-            </div>
-          </button>
-
-          <!-- Dark mode toggle -->
-          <button id="theme-toggle"
-                  class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
-                  aria-label="Toggle dark mode">
-            <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
-          </button>
-
-          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-               data-alt="User profile picture"
-               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAYT1tQ4chaP4iH9L2AScAutifkdvlsz7t0vpkbq-_QEkFd-DDkt6aeDLVZxhN7IYMEGyMSc1pplb8GISJ5xg3yEAsV8ifwTWwtKBvTzyXp1BDrRRVEhay9ciqhIFKyazqvahvdOKgobnpRIL-R0rHWWVJ9r_625zxzKozzA8X7bDtce3GNxDmcAIpKnQSXWwBqj6iaQUX_UoyfY7SWk2eRZB-0vl2NUmhE362wJG5WGx3W1Geblpl78wRWGEu11il_qYRp_wypg06");'>
-          </div>
-        </div>
+ <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 px-10 py-3 bg-white dark:bg-background-dark">
+  <div class="flex items-center gap-8">
+    <div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+      <div class="size-6 text-primary">
+        <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93V4.07z"></path>
+        </svg>
       </div>
+      <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Textbook Finder</h2>
     </div>
-  </header>
+
+    <div class="flex items-center gap-9">
+      <a class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+         href="../student_homepage_with_to-do/">
+        Home
+      </a>
+
+      <a class="text-primary text-sm font-medium leading-normal" href="#">
+        Textbooks
+      </a>
+
+      <a class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+         href="../ai_study_assistant/">
+        AI Assistant
+      </a>
+
+      <a class="text-sm font-medium leading-normal text-gray-600 dark:text-gray-300 hover:text-primary transition-colors"
+         href="#">
+        My Account
+      </a>
+
+      <!-- 🛒 Cart button that links to cart page -->
+      <a href="../affordable_textbooks_hub/"
+         class="relative flex items-center justify-center h-10 w-10 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <div id="cart-count-badge"
+             class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+          0
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="flex flex-1 justify-end gap-4 items-center">
+    <label class="flex flex-col min-w-40 h-10 max-w-64">
+      <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+        <div class="text-gray-500 flex items-center justify-center pl-3 pr-1 rounded-l-lg bg-gray-100 dark:bg-gray-800">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <input
+          class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-800 h-full placeholder:text-gray-500 px-2 text-sm font-normal"
+          placeholder="Search by ISBN, Title, Author"
+          value=""
+        />
+      </div>
+    </label>
+
+    <!-- 🌙 THEME TOGGLE BUTTON -->
+    <button id="theme-toggle"
+            class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+            aria-label="Toggle dark mode">
+      <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+    </button>
+  </div>
+</header>
+
 
   <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
