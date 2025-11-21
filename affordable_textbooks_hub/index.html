@@ -234,13 +234,13 @@
 </div>
 
 <!-- CART + THEME SCRIPTS -->
+<!-- CART + CASHBACK + CHECKOUT LOGIC -->
 <script>
   (function () {
-   const CART_KEY = 'eduverse_cart';          // cart items
-  const CASHBACK_KEY = 'eduverse_cashback';  // shared wallet (same as purchased_textbooks)
-  const PURCHASES_KEY = 'eduverse_purchases';
-  const SHIPPING_FLAT = 5;
-
+    const CART_KEY = 'eduverse_cart';          // cart items
+    const CASHBACK_KEY = 'eduverse_cashback';  // shared wallet (same as purchased_textbooks)
+    const PURCHASES_KEY = 'eduverse_purchases';
+    const SHIPPING_FLAT = 5;
 
     // whether user wants to use cashback on this order
     let useCashback = false;
@@ -260,18 +260,17 @@
     }
 
     function loadCashbackBalance() {
-  try {
-    const stored = localStorage.getItem(CASHBACK_KEY);
-    if (!stored) return 0;
+      try {
+        const stored = localStorage.getItem(CASHBACK_KEY);
+        if (!stored) return 0;
 
-    const obj = JSON.parse(stored);
-    return Number(obj.balance) || 0;
-  } catch (e) {
-    console.error('Error loading cashback balance:', e);
-    return 0;
-  }
-}
-
+        const obj = JSON.parse(stored);
+        return Number(obj.balance) || 0;
+      } catch (e) {
+        console.error('Error loading cashback balance:', e);
+        return 0;
+      }
+    }
 
     function getCartCount(cart) {
       return cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
@@ -343,75 +342,73 @@
       }
     }
 
-  function renderCartItems() {
-  const container = document.getElementById('cart-items');
-  const emptyState = document.getElementById('empty-cart');
-  if (!container) return;
+    function renderCartItems() {
+      const container = document.getElementById('cart-items');
+      const emptyState = document.getElementById('empty-cart');
+      if (!container) return;
 
-  const cart = loadCart();
+      const cart = loadCart();
 
-  // Empty cart UI
-  if (!cart.length) {
-    container.innerHTML = '';
-    if (emptyState) emptyState.classList.remove('hidden');
-    updateCartBadge(cart);
-    updateSummary(cart);
-    return;
-  }
+      // Empty cart UI
+      if (!cart.length) {
+        container.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        updateCartBadge(cart);
+        updateSummary(cart);
+        return;
+      }
 
-  if (emptyState) emptyState.classList.add('hidden');
+      if (emptyState) emptyState.classList.add('hidden');
 
-  container.innerHTML = cart.map(item => {
-    const qty = item.quantity || 1;
-    const price = Number(item.price) || 0;
-    const lineTotal = price * qty;
+      container.innerHTML = cart.map(item => {
+        const qty = item.quantity || 1;
+        const price = Number(item.price) || 0;
+        const lineTotal = price * qty;
 
-    return `
-      <div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4 cart-item"
-           data-id="${item.id}">
-        <img
-          class="w-24 h-32 object-cover rounded"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"
-          alt="Book cover placeholder"
-        />
-        <div class="flex-grow">
-          <h3 class="font-semibold text-md text-text-light dark:text-text-dark">
-            ${item.title || 'Untitled Textbook'}
-          </h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400">
-            Price: ${formatMoney(price)}
-          </p>
-          <div class="flex items-center gap-2 mt-2">
-            <label class="text-sm" for="qty-${item.id}">Qty:</label>
-            <input
-              id="qty-${item.id}"
-              type="number"
-              min="1"
-              value="${qty}"
-              class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center qty-input"
-              data-id="${item.id}"
+        return `
+          <div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4 cart-item"
+               data-id="${item.id}">
+            <img
+              class="w-24 h-32 object-cover rounded"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"
+              alt="Book cover placeholder"
             />
+            <div class="flex-grow">
+              <h3 class="font-semibold text-md text-text-light dark:text-text-dark">
+                ${item.title || 'Untitled Textbook'}
+              </h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                Price: ${formatMoney(price)}
+              </p>
+              <div class="flex items-center gap-2 mt-2">
+                <label class="text-sm" for="qty-${item.id}">Qty:</label>
+                <input
+                  id="qty-${item.id}"
+                  type="number"
+                  min="1"
+                  value="${qty}"
+                  class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center qty-input"
+                  data-id="${item.id}"
+                />
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-bold text-primary">
+                ${formatMoney(lineTotal)}
+              </p>
+              <button
+                class="text-sm text-gray-500 hover:text-red-500 mt-2 remove-item"
+                data-id="${item.id}">
+                Remove
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="text-right">
-          <p class="text-lg font-bold text-primary">
-            ${formatMoney(lineTotal)}
-          </p>
-          <button
-            class="text-sm text-gray-500 hover:text-red-500 mt-2 remove-item"
-            data-id="${item.id}">
-            Remove
-          </button>
-        </div>
-      </div>
-    `;
-  }).join('');
+        `;
+      }).join('');
 
-  // ✅ just reuse the same `cart` variable
-  updateCartBadge(cart);
-  updateSummary(cart);
-}
-
+      updateCartBadge(cart);
+      updateSummary(cart);
+    }
 
     function attachCartHandlers() {
       const container = document.getElementById('cart-items');
@@ -453,39 +450,118 @@
         }
       });
     }
-document.addEventListener('DOMContentLoaded', () => {
-  renderCartItems();
-  attachCartHandlers();
 
-  // 🔘 Cashback toggle behavior (you already have this)
-  const toggle = document.getElementById('apply-cashback-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      useCashback = !useCashback;
+    function checkout() {
+      const cart = loadCart();
+      if (!cart.length) return;
 
-      if (useCashback) {
-        toggle.textContent = 'Using';
-        toggle.classList.remove('bg-transparent', 'text-primary');
-        toggle.classList.add('bg-primary', 'text-white');
-      } else {
-        toggle.textContent = 'Use';
-        toggle.classList.remove('bg-primary', 'text-white');
-        toggle.classList.add('bg-transparent', 'text-primary');
+      const subtotal = cart.reduce((sum, item) => {
+        const price = Number(item.price) || 0;
+        const qty = Number(item.quantity) || 1;
+        return sum + price * qty;
+      }, 0);
+
+      const shipping = subtotal > 0 ? SHIPPING_FLAT : 0;
+      const now = new Date().toISOString();
+
+      // Load cashback wallet (same structure as purchased_textbooks)
+      let wallet;
+      try {
+        wallet = JSON.parse(localStorage.getItem(CASHBACK_KEY) || '{"balance":0,"history":[]}');
+      } catch (e) {
+        wallet = { balance: 0, history: [] };
       }
 
-      const cart = loadCart();
-      updateSummary(cart);
-    });
-  }
+      const earnedThisOrder = subtotal * 0.10; // 10% new cashback
+      const maxPayable = subtotal + shipping;
 
-  // ✅ Checkout button click
-  const checkoutBtn = document.getElementById('checkout-button');
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', checkout);
-  }
-});
- 
+      // How much cashback the user actually uses on this order
+      const appliedCashback = useCashback
+        ? Math.min(wallet.balance, maxPayable)
+        : 0;
+
+      // 1️⃣ Subtract used cashback from wallet (if any)
+      if (useCashback && appliedCashback > 0) {
+        wallet.balance -= appliedCashback;
+        wallet.history.push({
+          amount: -appliedCashback,
+          date: now,
+          source: 'Used at checkout'
+        });
+      }
+
+      // 2️⃣ Add newly earned cashback
+      wallet.balance += earnedThisOrder;
+      wallet.history.push({
+        amount: earnedThisOrder,
+        date: now,
+        source: 'Textbook purchase cashback'
+      });
+
+      localStorage.setItem(CASHBACK_KEY, JSON.stringify(wallet));
+
+      // 3️⃣ Move cart items into purchases
+      let purchases;
+      try {
+        purchases = JSON.parse(localStorage.getItem(PURCHASES_KEY) || '[]');
+      } catch (e) {
+        purchases = [];
+      }
+
+      const newPurchases = cart.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        quantity: item.quantity || 1,
+        purchasedAt: now
+      }));
+
+      localStorage.setItem(
+        PURCHASES_KEY,
+        JSON.stringify([...purchases, ...newPurchases])
+      );
+
+      // 4️⃣ Clear the cart
+      localStorage.removeItem(CART_KEY);
+
+      // 5️⃣ Go to purchased textbooks page
+      window.location.href = '../purchased_textbooks/';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartItems();
+      attachCartHandlers();
+
+      // 🔘 Cashback toggle behavior
+      const toggle = document.getElementById('apply-cashback-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          useCashback = !useCashback;
+
+          if (useCashback) {
+            toggle.textContent = 'Using';
+            toggle.classList.remove('bg-transparent', 'text-primary');
+            toggle.classList.add('bg-primary', 'text-white');
+          } else {
+            toggle.textContent = 'Use';
+            toggle.classList.remove('bg-primary', 'text-white');
+            toggle.classList.add('bg-transparent', 'text-primary');
+          }
+
+          const cart = loadCart();
+          updateSummary(cart);
+        });
+      }
+
+      // ✅ Checkout button click
+      const checkoutBtn = document.getElementById('checkout-button');
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', checkout);
+      }
+    });
+  })();
 </script>
+
 
 
 <!-- 🌙 DARK MODE SCRIPT -->
@@ -520,84 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 </script>
 
-  <script>
-function checkout() {
-  const cart = loadCart();
-  if (!cart.length) return;
 
-  const subtotal = cart.reduce((sum, item) => {
-    const price = Number(item.price) || 0;
-    const qty = Number(item.quantity) || 1;
-    return sum + price * qty;
-  }, 0);
-
-  const shipping = subtotal > 0 ? SHIPPING_FLAT : 0;
-  const now = new Date().toISOString();
-
-  // Load cashback wallet (same structure as purchased_textbooks)
-  let wallet;
-  try {
-    wallet = JSON.parse(localStorage.getItem(CASHBACK_KEY) || '{"balance":0,"history":[]}');
-  } catch (e) {
-    wallet = { balance: 0, history: [] };
-  }
-
-  const earnedThisOrder = subtotal * 0.10; // 10% new cashback
-  const maxPayable = subtotal + shipping;
-
-  // How much cashback the user actually uses on this order
-  const appliedCashback = useCashback
-    ? Math.min(wallet.balance, maxPayable)
-    : 0;
-
-  // 1️⃣ Subtract used cashback from wallet (if any)
-  if (useCashback && appliedCashback > 0) {
-    wallet.balance -= appliedCashback;
-    wallet.history.push({
-      amount: -appliedCashback,
-      date: now,
-      source: 'Used at checkout'
-    });
-  }
-
-  // 2️⃣ Add newly earned cashback
-  wallet.balance += earnedThisOrder;
-  wallet.history.push({
-    amount: earnedThisOrder,
-    date: now,
-    source: 'Textbook purchase cashback'
-  });
-
-  localStorage.setItem(CASHBACK_KEY, JSON.stringify(wallet));
-
-  // 3️⃣ Move cart items into purchases
-  let purchases;
-  try {
-    purchases = JSON.parse(localStorage.getItem(PURCHASES_KEY) || '[]');
-  } catch (e) {
-    purchases = [];
-  }
-
-  const newPurchases = cart.map(item => ({
-    id: item.id,
-    title: item.title,
-    price: item.price,
-    quantity: item.quantity || 1,
-    purchasedAt: now
-  }));
-
-  localStorage.setItem(
-    PURCHASES_KEY,
-    JSON.stringify([...purchases, ...newPurchases])
-  );
-
-  // 4️⃣ Clear the cart
-  localStorage.removeItem(CART_KEY);
-
-  // 5️⃣ Go to purchased textbooks page
-  window.location.href = '../purchased_textbooks/';
-}
-</script>
 
 
 
