@@ -303,74 +303,75 @@
       }
     }
 
-    function renderCartItems() {
-      const container = document.getElementById('cart-items');
-      const emptyState = document.getElementById('empty-cart');
-      if (!container) return;
+  function renderCartItems() {
+  const container = document.getElementById('cart-items');
+  const emptyState = document.getElementById('empty-cart');
+  if (!container) return;
 
-      const cart = loadCart();
+  const cart = loadCart();
 
-      // Empty cart UI
-      if (!cart.length) {
-        container.innerHTML = '';
-        if (emptyState) emptyState.classList.remove('hidden');
-        updateCartBadge(cart);
-        updateSummary(cart);
-        return;
-      }
+  // Empty cart UI
+  if (!cart.length) {
+    container.innerHTML = '';
+    if (emptyState) emptyState.classList.remove('hidden');
+    updateCartBadge(cart);
+    updateSummary(cart);
+    return;
+  }
 
-      if (emptyState) emptyState.classList.add('hidden');
+  if (emptyState) emptyState.classList.add('hidden');
 
-      container.innerHTML = cart.map(item => {
-        const qty = item.quantity || 1;
-        const price = Number(item.price) || 0;
-        const lineTotal = price * qty;
+  container.innerHTML = cart.map(item => {
+    const qty = item.quantity || 1;
+    const price = Number(item.price) || 0;
+    const lineTotal = price * qty;
 
-        return `
-          <div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4 cart-item"
-               data-id="${item.id}">
-            <img
-              class="w-24 h-32 object-cover rounded"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"
-              alt="Book cover placeholder"
+    return `
+      <div class="bg-panel-light dark:bg-panel-dark rounded-lg p-4 flex items-start gap-4 cart-item"
+           data-id="${item.id}">
+        <img
+          class="w-24 h-32 object-cover rounded"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2bTPRVveUEohDU6kzxe5pbT8PNxqasDnukAB7O-cudpfWOGmw_PtYvfxPMR3RAcjBJewqrjDvaeUXXtczsKsdYI0nNX_oPR8Nh0zc5m05s_7FyOX5ug408CItnq7TTjqdV_39ZxDDOniS-ldBNVew801RHfRASpuKtN9rlW5tLR5ePyBoAZh-ya9C0u1_iPAP1r1cuNFGKYv0TsubCDQ_fcVJGOX4LRkeIe7yhT-vWrSr1BQGr2-Lc5e-ofpE4iJ2l9tX7b0HBDpv"
+          alt="Book cover placeholder"
+        />
+        <div class="flex-grow">
+          <h3 class="font-semibold text-md text-text-light dark:text-text-dark">
+            ${item.title || 'Untitled Textbook'}
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Price: ${formatMoney(price)}
+          </p>
+          <div class="flex items-center gap-2 mt-2">
+            <label class="text-sm" for="qty-${item.id}">Qty:</label>
+            <input
+              id="qty-${item.id}"
+              type="number"
+              min="1"
+              value="${qty}"
+              class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center qty-input"
+              data-id="${item.id}"
             />
-            <div class="flex-grow">
-              <h3 class="font-semibold text-md text-text-light dark:text-text-dark">
-                ${item.title || 'Untitled Textbook'}
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                Price: ${formatMoney(price)}
-              </p>
-              <div class="flex items-center gap-2 mt-2">
-                <label class="text-sm" for="qty-${item.id}">Qty:</label>
-                <input
-                  id="qty-${item.id}"
-                  type="number"
-                  min="1"
-                  value="${qty}"
-                  class="form-input w-16 rounded-md bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-center qty-input"
-                  data-id="${item.id}"
-                />
-              </div>
-            </div>
-            <div class="text-right">
-              <p class="text-lg font-bold text-primary">
-                ${formatMoney(lineTotal)}
-              </p>
-              <button
-                class="text-sm text-gray-500 hover:text-red-500 mt-2 remove-item"
-                data-id="${item.id}">
-                Remove
-              </button>
-            </div>
           </div>
-        `;
-      }).join('');
+        </div>
+        <div class="text-right">
+          <p class="text-lg font-bold text-primary">
+            ${formatMoney(lineTotal)}
+          </p>
+          <button
+            class="text-sm text-gray-500 hover:text-red-500 mt-2 remove-item"
+            data-id="${item.id}">
+            Remove
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
 
-      const cart = loadCart();
-      updateCartBadge(cart);
-      updateSummary(cart);
-    }
+  // ✅ just reuse the same `cart` variable
+  updateCartBadge(cart);
+  updateSummary(cart);
+}
+
 
     function attachCartHandlers() {
       const container = document.getElementById('cart-items');
