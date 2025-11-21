@@ -106,6 +106,11 @@
 
 </header>
 
+<!-- Welcome New User -->
+    <!-- 👋 Dynamic Welcome Message -->
+<h2 id="welcome-user" class="text-2xl font-bold text-primary dark:text-white mb-2"></h2>
+
+    
 <!-- ⭐ Centered Tagline Section -->
 <section class="text-center py-8">
   <h1 class="text-3xl font-bold text-primary dark:text-white">
@@ -597,7 +602,28 @@
     });
   })();
 </script>
- 
+
+<script>
+  (function () {
+    const USER_KEY = 'eduverse_user';
+    const welcomeEl = document.getElementById('welcome-user');
+
+    // Load saved user
+    const raw = localStorage.getItem(USER_KEY);
+    if (!raw) return; // no user logged in
+
+    try {
+      const user = JSON.parse(raw);
+      if (user.name && welcomeEl) {
+        welcomeEl.textContent = `Welcome, ${user.name}`;
+      }
+    } catch (e) {
+      console.error('Error loading user:', e);
+    }
+  })();
+</script>
+
+    
     
 </body>
 </html>
