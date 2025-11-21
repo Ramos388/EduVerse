@@ -104,135 +104,123 @@
 </div>
 </header>
 <main class="flex-1">
-<!-- 📚 Assignments Section -->
-<section class="mt-8">
+<!-- 📝 ASSIGNMENTS SECTION -->
+<section id="assignments-section" class="mt-8">
+  <!-- Header row: title on left, links + button on right -->
+  <div class="flex items-center justify-between mb-4 px-6">
+    <h2 class="text-2xl font-bold">Assignments</h2>
 
-   <div class="flex items-center gap-5 mb-4 px-6">
-  <h2 class="text-2xl font-bold">Assignments</h2>
-  <button id="add-assignment-btn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80">
-    + New Assignment
-  </button>
-</div>
-   </div>
-
-  <!-- Empty state -->
-  <div
-    id="assignments-empty"
-    class="mt-4 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-6 text-center text-sm text-gray-500 dark:text-gray-400"
-  >
-    No assignments yet. Click <span class="font-semibold">New Assignment</span> to get started.
-  </div>
-
-  <!-- Assignment list -->
-  <div id="assignments-list" class="space-y-3 mt-4 hidden">
-    <!-- cards injected by JS -->
-  </div>
-</section>
-
-    <!-- ✏️ New Assignment Form (hidden by default) -->
-<div
-  id="assignment-form-wrapper"
-  class="fixed inset-0 bg-black/40 flex items-center justify-center z-40 hidden"
->
-  <div class="bg-background-light dark:bg-background-dark rounded-xl shadow-lg w-full max-w-lg p-6">
-    <div class="flex items-center justify-between mb-4">
-      <h3 class="text-lg font-bold">New Assignment</h3>
-      <button
-        id="close-assignment-form"
-        class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+    <div class="flex items-center gap-4 text-sm">
+      <a
+        href="../tutorial/"
+        class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white"
       >
-        <span class="material-symbols-outlined">close</span>
+        Tutorial
+      </a>
+
+      <a
+        href="../purchased_textbooks/"
+        class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white"
+      >
+        Cashback
+      </a>
+
+      <a
+        href="../about/"
+        class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white"
+      >
+        About
+      </a>
+
+      <button
+        id="add-assignment-btn"
+        class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 text-sm font-medium"
+      >
+        + New Assignment
       </button>
     </div>
+  </div>
 
-    <form id="assignment-form" class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium mb-1" for="assignment-title">
-          Title
+  <!-- New Assignment form (hidden until button is clicked) -->
+  <div
+    id="new-assignment-form"
+    class="mx-6 mb-4 p-4 rounded-lg bg-panel-light dark:bg-panel-dark shadow hidden"
+  >
+    <div class="grid gap-4 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <label class="block text-xs font-semibold mb-1" for="assignment-title">
+          Assignment Title
         </label>
         <input
           id="assignment-title"
           type="text"
-          required
-          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
-          placeholder="Chapter 3 Quiz, Midterm Exam, Research Paper..."
+          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-sm"
+          placeholder="Chapter 3 Quiz, Lab Report, Essay 1, etc."
         />
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1" for="assignment-course">
+        <label class="block text-xs font-semibold mb-1" for="assignment-course">
           Course
         </label>
         <input
           id="assignment-course"
           type="text"
-          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
-          placeholder="ECO 101, BIO 12, INFO 015..."
+          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-sm"
+          placeholder="ECO 001, PSY 001, etc."
         />
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm font-medium mb-1" for="assignment-due">
-            Due Date
-          </label>
-          <input
-            id="assignment-due"
-            type="date"
-            class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
-          />
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-1" for="assignment-type">
-            Type
-          </label>
-          <select
-            id="assignment-type"
-            class="form-select w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
-          >
-            <option value="Homework">Homework</option>
-            <option value="Reading">Reading</option>
-            <option value="Quiz">Quiz</option>
-            <option value="Exam">Exam</option>
-            <option value="Project">Project</option>
-            <option value="Other" selected>Other</option>
-          </select>
-        </div>
+      <div>
+        <label class="block text-xs font-semibold mb-1" for="assignment-date">
+          Due Date
+        </label>
+        <input
+          id="assignment-date"
+          type="date"
+          class="form-input w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-sm"
+        />
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1" for="assignment-notes">
-          Notes (optional)
+        <label class="block text-xs font-semibold mb-1" for="assignment-status">
+          Status
         </label>
-        <textarea
-          id="assignment-notes"
-          rows="3"
-          class="form-textarea w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700"
-          placeholder="Any extra details, chapter numbers, professor notes..."
-        ></textarea>
+        <select
+          id="assignment-status"
+          class="form-select w-full rounded-lg bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-600 text-sm"
+        >
+          <option>Not started</option>
+          <option>In progress</option>
+          <option>Completed</option>
+        </select>
       </div>
+    </div>
 
-      <div class="flex justify-end gap-3 pt-2">
-        <button
-          type="button"
-          id="cancel-assignment"
-          class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90"
-        >
-          Save Assignment
-        </button>
-      </div>
-    </form>
+    <div class="mt-4 flex justify-end gap-2">
+      <button
+        id="cancel-assignment-btn"
+        type="button"
+        class="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+      >
+        Cancel
+      </button>
+      <button
+        id="save-assignment-btn"
+        type="button"
+        class="px-4 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary/90"
+      >
+        Save Assignment
+      </button>
+    </div>
   </div>
-</div>
 
-    
+  <!-- Assignments list -->
+  <div id="assignments-list" class="space-y-3 px-6 pb-8">
+    <!-- JS will render cards here -->
+  </div>
+</section>
+
 </main>
 
 </div> <!-- closes .layout-container -->
@@ -459,6 +447,143 @@
   })();
 </script>
 
+   <script>
+  (function () {
+    const STORAGE_KEY = 'eduverse_assignments';
+
+    function loadAssignments() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        console.error('Error loading assignments', e);
+        return [];
+      }
+    }
+
+    function saveAssignments(list) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    }
+
+    function formatDateDisplay(iso) {
+      if (!iso) return 'No due date';
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+
+    function renderAssignments() {
+      const container = document.getElementById('assignments-list');
+      if (!container) return;
+
+      const items = loadAssignments();
+
+      if (!items.length) {
+        container.innerHTML = `
+          <div class="rounded-lg border border-dashed border-gray-300 dark:border-gray-700 p-6 text-center text-sm text-gray-500 dark:text-gray-400">
+            No assignments yet. Click <span class="font-semibold">+ New Assignment</span> to get started.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = items
+        .map((a, index) => {
+          return `
+            <div class="flex items-center justify-between rounded-lg bg-white dark:bg-background-dark shadow-sm px-4 py-3">
+              <div>
+                <p class="font-medium text-sm">
+                  ${a.title || 'Untitled assignment'}
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">
+                  ${a.course ? a.course + ' · ' : ''}Due ${formatDateDisplay(a.dueDate)}
+                </p>
+              </div>
+              <div class="flex items-center gap-3 text-xs">
+                <span class="inline-flex items-center rounded-full px-2 py-1 border border-gray-300 dark:border-gray-600">
+                  ${a.status || 'Not started'}
+                </span>
+                <button
+                  class="delete-assignment text-gray-400 hover:text-red-500"
+                  data-index="${index}"
+                  title="Delete assignment"
+                >
+                  <span class="material-symbols-outlined text-base">delete</span>
+                </button>
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+    }
+
+    function showForm(show) {
+      const form = document.getElementById('new-assignment-form');
+      if (!form) return;
+      if (show) form.classList.remove('hidden');
+      else form.classList.add('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const addBtn = document.getElementById('add-assignment-btn');
+      const cancelBtn = document.getElementById('cancel-assignment-btn');
+      const saveBtn = document.getElementById('save-assignment-btn');
+      const listEl = document.getElementById('assignments-list');
+
+      renderAssignments();
+
+      addBtn?.addEventListener('click', () => {
+        // clear inputs each time
+        const titleEl = document.getElementById('assignment-title');
+        const courseEl = document.getElementById('assignment-course');
+        const dateEl = document.getElementById('assignment-date');
+        const statusEl = document.getElementById('assignment-status');
+
+        if (titleEl) titleEl.value = '';
+        if (courseEl) courseEl.value = '';
+        if (dateEl) dateEl.value = '';
+        if (statusEl) statusEl.value = 'Not started';
+
+        showForm(true);
+      });
+
+      cancelBtn?.addEventListener('click', () => {
+        showForm(false);
+      });
+
+      saveBtn?.addEventListener('click', () => {
+        const title = document.getElementById('assignment-title')?.value.trim() || '';
+        const course = document.getElementById('assignment-course')?.value.trim() || '';
+        const dueDate = document.getElementById('assignment-date')?.value || '';
+        const status = document.getElementById('assignment-status')?.value || 'Not started';
+
+        const assignments = loadAssignments();
+        assignments.push({ title, course, dueDate, status });
+        saveAssignments(assignments);
+
+        showForm(false);
+        renderAssignments();
+      });
+
+      // delete handler
+      listEl?.addEventListener('click', (e) => {
+        const btn = e.target.closest('.delete-assignment');
+        if (!btn) return;
+        const idx = Number(btn.dataset.index);
+        if (Number.isNaN(idx)) return;
+
+        const assignments = loadAssignments();
+        assignments.splice(idx, 1);
+        saveAssignments(assignments);
+        renderAssignments();
+      });
+    });
+  })();
+</script>
+ 
     
 </body>
 </html>
