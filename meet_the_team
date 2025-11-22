@@ -1,1 +1,269 @@
 
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>EduVerse – Meet the Team</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4A90E2",
+            "background-light": "#F5F5F5",
+            "background-dark": "#101922",
+            "panel-light": "#FFFFFF",
+            "panel-dark": "#1a242f"
+          },
+          fontFamily: {
+            display: ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "0.75rem",
+            xl: "1rem",
+            full: "9999px"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100">
+<div class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white dark:bg-background-dark/60 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="flex items-center justify-between py-3">
+        <!-- Left: Logo -->
+        <div class="flex items-center gap-3 text-primary dark:text-white">
+          <span class="material-symbols-outlined text-3xl">school</span>
+          <div>
+            <h1 class="text-xl font-bold leading-tight">EduVerse</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Learning Made Affordable</p>
+          </div>
+        </div>
+
+        <!-- Center: Nav -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="../student_homepage_with_to-do/"
+             class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+            Dashboard
+          </a>
+          <a href="../search_textbooks_hubcode/"
+             class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+            Textbooks
+          </a>
+          <a href="../ai_study_assistant/"
+             class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+            AI Study Assistant
+          </a>
+          <a href="../purchased_textbooks/"
+             class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+            Cashback
+          </a>
+          <a href="../tutorial/"
+             class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+            Tutorial
+          </a>
+          <a href="../EduVerse/"
+             class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+            My Account
+          </a>
+        </nav>
+
+        <!-- Right: Theme toggle -->
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle"
+                  class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
+                  aria-label="Toggle dark mode">
+            <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+    <section class="container mx-auto px-6 py-10 lg:py-14">
+      <!-- Hero -->
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary mb-2">
+          Meet the Team
+        </p>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-3">
+          The people behind EduVerse.
+        </h2>
+        <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 max-w-xl">
+          EduVerse was built by students for students.  
+          Our team combines product design, technology, operations, and marketing to make textbooks
+          more affordable and studying less stressful.
+        </p>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Jesse -->
+        <article class="bg-panel-light dark:bg-panel-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 flex flex-col">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+              JQ
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Jesse Quaye</h3>
+              <p class="text-xs font-medium text-primary uppercase tracking-wide">Chief Executive Officer (CEO)</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 flex-1">
+            Leads the overall vision and direction of EduVerse, making sure every feature supports
+            one core goal: helping students save money while actually understanding their coursework.
+          </p>
+        </article>
+
+        <!-- Sean -->
+        <article class="bg-panel-light dark:bg-panel-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 flex flex-col">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+              SC
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Sean Connell</h3>
+              <p class="text-xs font-medium text-primary uppercase tracking-wide">Co–Chief Executive Officer (Co-CEO)</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 flex-1">
+            Works side-by-side with the CEO on strategy, partnerships, and product decisions, helping
+            keep EduVerse aligned with real student needs on campus.
+          </p>
+        </article>
+
+        <!-- Ronnie -->
+        <article class="bg-panel-light dark:bg-panel-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 flex flex-col">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+              RT
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Ronnie Terzi</h3>
+              <p class="text-xs font-medium text-primary uppercase tracking-wide">Chief Operating Officer (COO)</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 flex-1">
+            Owns the day-to-day operations: from how textbooks flow through the platform to how
+            cashback and support feel seamless for every user.
+          </p>
+        </article>
+
+        <!-- Rishi -->
+        <article class="bg-panel-light dark:bg-panel-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 flex flex-col">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+              RK
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Rishi Kapoor</h3>
+              <p class="text-xs font-medium text-primary uppercase tracking-wide">Chief Marketing Officer (CMO)</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 flex-1">
+            Focuses on how EduVerse shows up to students—brand, messaging, and growth—making sure
+            more people hear about affordable textbooks and AI-powered studying.
+          </p>
+        </article>
+
+        <!-- Kevin -->
+        <article class="bg-panel-light dark:bg-panel-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 flex flex-col">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+              KR
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold">Kevin Ramos-Perez</h3>
+              <p class="text-xs font-medium text-primary uppercase tracking-wide">Chief Technology Officer (CTO)</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 flex-1">
+            Leads the technical side of EduVerse—from the textbook search and cart system to
+            the assignment dashboard and AI study assistant experience.
+          </p>
+        </article>
+
+        <!-- Optional “We’re students too” card -->
+        <article class="bg-panel-light dark:bg-panel-dark rounded-xl shadow-sm border border-dashed border-gray-300 dark:border-gray-600 p-5 flex flex-col">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="material-symbols-outlined text-3xl text-primary">diversity_3</span>
+            <h3 class="text-lg font-semibold">Built by students, for students</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 flex-1">
+            We know what it feels like to juggle tuition, rent, and $200 textbooks. EduVerse is our
+            answer: a platform that respects your budget and your time.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-background-dark/80 border-t border-gray-200 dark:border-gray-700 mt-8">
+    <div class="container mx-auto px-6 py-6 text-sm text-gray-600 dark:text-gray-400 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p>© 2024 EduVerse. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="../meet_the_team/" class="hover:text-primary">About / Team</a>
+        <a href="../tutorial/" class="hover:text-primary">Getting Started</a>
+        <a href="#" class="hover:text-primary">Contact</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- 🌙 DARK MODE SCRIPT -->
+<script>
+  (function () {
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    if (!btn || !icon) return;
+
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      html.classList.add('dark');
+    } else if (saved === 'light') {
+      html.classList.remove('dark');
+    }
+
+    function updateIcon() {
+      icon.textContent = html.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    }
+    updateIcon();
+
+    btn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const mode = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', mode);
+      updateIcon();
+    });
+  })();
+</script>
+
+</body>
+</html>
